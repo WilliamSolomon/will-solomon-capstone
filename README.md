@@ -29,7 +29,6 @@ Logged users will have access to:
 ### Tech Stack
 
 - React
-- TypeScript
 - MySQL
 - Express
 - Client libraries: 
@@ -58,7 +57,7 @@ Logged users will have access to:
 - Settings
 
 ### Mockup
-![](mockup.png)
+![](./src/assets/images/Mockup.png)
 
 
 ### Data
@@ -68,7 +67,7 @@ VIP Guests: Stored information for recognized VIPs
 VIP Alerts: Stored information for alerts sent
 Employees: Stored information for registered employees for facial recognition
 
-![](SQLdata.png)
+![](./src/assets/images/SQLdata.png)
 
 ### Endpoints
 
