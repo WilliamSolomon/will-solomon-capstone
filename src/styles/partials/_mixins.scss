@@ -1,0 +1,36 @@
+@import "./variables";
+@import "./fonts";
+
+// breakpoints
+
+@mixin mobile {
+    @media screen and (max-width: ($tablet-break - 1)){
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media screen and (min-width: $tablet-break) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media screen and (min-width: $desktop-break) {
+        @content;
+    }
+}
+
+// typography
+
+@mixin font-styling($fw, $c: $black) {
+    font-family: "TitilliumWeb";
+    font-weight: $fw;
+    color: $c;
+}
+
+@mixin format-text($lh, $fs: 1rem, $fw) {
+    line-height: $lh;
+    font-size: $fs;
+    font-weight: $fw;
+}

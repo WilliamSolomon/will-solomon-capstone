@@ -58,7 +58,7 @@ Logged users will have access to:
 - Settings
 
 ### Mockup
-![](Mockup.png)
+![](mockup.png)
 
 
 ### Data
