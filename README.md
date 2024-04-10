@@ -57,7 +57,7 @@ Alternatively, you plan your next outing a week away, unaware that the weather h
 - Alert List
 
 ### Mockup
-![](./src/assets/images/Mockup.png)
+![](./src/assets/images/ProposalMockup.png)
 
 
 ### Data
@@ -68,12 +68,9 @@ Settings: Stored information for alerts sent
 Register: Stored information for registered employees for facial recognition
 Users:
 
-![](./src/assets/images/SQLdata.png)
+![](./src/assets/images/ProposalSQLdata.png)
 
 ### Endpoints
-
-
-
 
 - Handle CRUD operations for user weather alert settings.
 
@@ -109,9 +106,6 @@ Response:
 {
     "token": "JWT_TOKEN"
 }
-
-
-
 
 
 **GET /api/weather/forecast**
@@ -205,8 +199,8 @@ Response:
       "clouds": 66,
       "pop": 0.82,
       "rain": 5.32
-    },
-
+    }]
+}
 
 **GET /api/users/:id/alerts**
 
@@ -215,7 +209,8 @@ Response:
 Response:
 
 [{        
-  "id": 1,        
+  "id": 1,    
+  "user_id": 1,    
   "category": "condition",        
   "weather": "Fog",        
   "date": "1661943600",
@@ -223,7 +218,8 @@ Response:
   "update": "none"
 },    
 {         
-  "id": 2,        
+  "id": 2,    
+  "user_id": 2,    
   "category": "date",
   "weather": "Cloudy"  
   "date": "1661943600",   
