@@ -1,28 +1,32 @@
 # Project Title
-PrestigePro Facial Recognition
+WeatherCap App
 
 ## Overview
 
-The app aims to provide restaurants and hotels with a VIP recognition system using real-time facial recognition technology. It will identify celebrities, special guests, high-level social media influencers, and renowned restaurant reviewers to alert staff for providing exceptional service.
+WeatherCap is an app that photography enthusiasts can use to receive alerts for specific weather conditions or for weather updates for a specific date.
 
 ### Problem
 
-Restaurants and hotels often struggle to identify VIP guests promptly, leading to missed opportunities for providing exceptional service and building relationships with influential individuals.
+You've always wanted to take foggy photos of the Manhattan Bridge, a mirror photo of the Empire State building in a puddle after a rainstorm, or the perfect sunset shot with a partly cloudy sky. The program is that with a such a busy life, you forget to keep an eye out for the perfect weather conditions for a spontaneous photo outing.
+Alternatively, you plan your next outing a week away, unaware that the weather has turned for the worse in the days between.
 
 ### User Profile
 
-- Restaurant/hotel management staff:
-    - use the app to receive alerts about VIP guests 
-    - offer enhanced guest experiences
+- Hobby Photographers:
+    - be alerts to specific weather conditions happeing in the next 7 days
+    - be alerts to weather changes for a specific date
 
 ### Features
 
-Logged users will have access to:
-- Real-time Facial Recognition: Detect celebrities, influencers, and reviewers.
-- VIP Alert System: Notify staff via email or SMS when a VIP is identified.
-- See a list of celebrities onsite within the last 24 hours.
-- Guest management: Allow user to add special guests and employee staff.
-- User Management: Allow user to register accounts and manage access.
+- As a user, I want to be able to select my location
+- As a user, I want to be able to select weather conditions to monitor for
+- As a user, I want to be able to select a specific date to monitor weather changes for
+
+- As a user, I want to be able to create an account to manage my alerts and alert settings
+
+- As a logged in user, I want to be receive alerts when not logged in 
+- As a logged in user, I want to be able retain settings after the browser is closed
+- As a logged in user, I want to be able delete/dismiss alerts
 
 ## Implementation
 
@@ -38,23 +42,19 @@ Logged users will have access to:
 - Server libraries:
     - knex
     - express
-    - bcrypt for password hashing
 
 ### APIs
 
-- face-api.js: for face detection and recognition
-- Celebrity Recognition: AWS Rekognition
-- SMS API: Twilio for sending SMS messages
+- OpenWeatherMap API: This API will provide current weather data, forecasts, and weather alerts for various locations worldwide.
 
 ### Sitemap
 
-- Home page
+- Landing Page
 - Register
 - Login
-- Camera View
-- VIP Alerts Onsite
-- Recognition Management
-- Settings
+- Dashboard
+- Alert Settings
+- Alert List
 
 ### Mockup
 ![](./src/assets/images/Mockup.png)
@@ -62,14 +62,20 @@ Logged users will have access to:
 
 ### Data
 
-Users: Staff accounts with authentication details
-VIP Guests: Stored information for recognized VIPs
-VIP Alerts: Stored information for alerts sent
-Employees: Stored information for registered employees for facial recognition
+Forcast: Staff accounts with authentication details
+Alerts: Stored information for recognized VIPs
+Settings: Stored information for alerts sent
+Register: Stored information for registered employees for facial recognition
+Users:
 
 ![](./src/assets/images/SQLdata.png)
 
 ### Endpoints
+
+
+
+
+- Handle CRUD operations for user weather alert settings.
 
 
 **POST /api/users/register**
@@ -105,68 +111,170 @@ Response:
 }
 
 
-**GET /api/vips:id**
 
-- Retrieve information about recognized VIP guests.
+
+
+**GET /api/weather/forecast**
+
+- Retrieve weather forcast information.
+
+Response:
+
+{
+  "city": {
+    "id": 3163858,
+    "name": "Zocca",
+    "coord": {
+      "lon": 10.99,
+      "lat": 44.34
+    },
+    "country": "IT",
+    "population": 4593,
+    "timezone": 7200
+  },
+  "cod": "200",
+  "message": 0.0582563,
+  "cnt": 7,
+  "list": [
+    {
+      "dt": 1661857200,
+      "sunrise": 1661834187,
+      "sunset": 1661882248,
+      "temp": {
+        "day": 299.66,
+        "min": 288.93,
+        "max": 299.66,
+        "night": 290.31,
+        "eve": 297.16,
+        "morn": 288.93
+      },
+      "feels_like": {
+        "day": 299.66,
+        "night": 290.3,
+        "eve": 297.1,
+        "morn": 288.73
+      },
+      "pressure": 1017,
+      "humidity": 44,
+      "weather": [
+        {
+          "id": 500,
+          "main": "Rain",
+          "description": "light rain",
+          "icon": "10d"
+        }
+      ],
+      "speed": 2.7,
+      "deg": 209,
+      "gust": 3.58,
+      "clouds": 53,
+      "pop": 0.7,
+      "rain": 2.51
+    },
+    {
+      "dt": 1661943600,
+      "sunrise": 1661920656,
+      "sunset": 1661968542,
+      "temp": {
+        "day": 295.76,
+        "min": 287.73,
+        "max": 295.76,
+        "night": 289.37,
+        "eve": 292.76,
+        "morn": 287.73
+      },
+      "feels_like": {
+        "day": 295.64,
+        "night": 289.45,
+        "eve": 292.97,
+        "morn": 287.59
+      },
+      "pressure": 1014,
+      "humidity": 60,
+      "weather": [
+        {
+          "id": 500,
+          "main": "Rain",
+          "description": "light rain",
+          "icon": "10d"
+        }
+      ],
+      "speed": 2.29,
+      "deg": 215,
+      "gust": 3.27,
+      "clouds": 66,
+      "pop": 0.82,
+      "rain": 5.32
+    },
+
+
+**GET /api/users/:id/alerts**
+
+- Retrieve weather alerts for logged in user
 
 Response:
 
 [{        
   "id": 1,        
-  "name": "John Doe",        
-  "category": "Celebrity",        
-  "image": "https://example.com/john-doe.jpg"
+  "category": "condition",        
+  "weather": "Fog",        
+  "date": "1661943600",
+  "status": "active",
+  "update": "none"
 },    
 {         
   "id": 2,        
-  "name": "Jane Smith",        
-  "category": "Reviewer",        
-  "image": "https://example.com/jane-smith.jpg"    
+  "category": "date",
+  "weather": "Cloudy"  
+  "date": "1661943600",   
+  "status": "active",        
+  "update": "none"    
 }]
 
+**POST /api/alerts/**
 
-**POST /api/vips**
-
-- Add a new VIP guest.
+- Store information for alerts regarding weather settings.
 
 Parameters:
 
-- name (string): Name of the VIP guest
-- category (string): Category of the VIP guest (e.g., Celebrity, Reviewer)
-- image (string): URL to the image of the VIP guest
+- user_id (number): ID of the logged in user
+- setting_id (number): ID of the associated weather alert setting
+- timestamp (datetime): Timestamp of when the alert was sent
 
 Response:
 
 {
-  "message": "VIP guest added successfully"
+"message": "Weather alert stored successfully"
 }
 
 
-**DELETE /api/vips/:id**
+**DELETE /api/alerts/:id**
 
-- Remove a VIP guest.
+- Remove a weather alert.
 
 Parameters:
 
-- id (number): ID of the VIP guest to be removed
+- id (number): ID of the weather to be removed
 
 Response:
 
 {
-  "message": "VIP guest removed successfully"
+  "message": "Weather alert removed successfully"
 }
 
 
-**GET /api/vip-alerts**
+**GET /api/settings**
 
-- Retrieve information about alerts sent regarding recognized VIP guests.
+- Retrieve information about alerts selected by a user.
 
 Response:
 [{
   "id": 1,
   "user_id": 1,
-  "vip_id": 1,
-  "employee_id": 2,
+  "location": [ "40.7128", "74.0060"],
+  "category": "weather",
+  "date": "2024-03-27",
+  "condition": "fog",
   "timestamp": "2024-03-27T10:15:00Z"
 },
 {
@@ -178,106 +286,56 @@ Response:
 }]
 
 
-**GET /api/vip-alerts/:id**
+**GET **GET /api/settings/:id**
 
-- Retrieve information about a specific VIP alert.
+- Retrieve information about a specific alert setting.
 
 Parameters:
 
-- id (number): ID of the VIP alert to retrieve
+- id (number): ID of the weather alert to retrieve
 
 Response:
 
 {
   "id": 1,
-  "vip_id": 1,
+  "user_id": 1,
+  "location": [ "40.7128", "74.0060"],
+  "category": "weather",
+  "date": "2024-03-27",
+  "condition": "fog",
   "timestamp": "2024-03-27T10:15:00Z"
 }
 
 
-**POST /api/vip-alerts**
+**POST /api/settings/**
 
-- Store information for alerts sent regarding recognized VIP guests.
+- Store setting information for alerts specified by user.
 
 Parameters:
 
-- vip_id (number): ID of the recognized VIP guest triggering the alert
-- timestamp (datetime): Timestamp of when the alert was sent
+- user_id (number): ID of the user adding the alert
+- timestamp (datetime): Timestamp of when the alert was added
 
 Response:
 
 {
-"message": "VIP alert stored successfully"
+"message": "Weather alert setting stored successfully"
 }
 
 
-**DELETE /api/vip-alerts/:id**
+**DELETE /api/settings/:id**
 
-- Remove a specific VIP alert.
+- Remove a specific weather alert setting.
 
 Parameters:
 
-- id (number): ID of the VIP alert to be removed
+- id (number): ID of the weather alert setting to be removed
 
 Response:
 
 {
-  "message": "VIP alert removed successfully"
+  "message": "Weather alert setting removed successfully"
 }
-
-
-
-**GET /api/employees**
-
-Retrieve information about registered employees.
-
-Response:
-[{ 
-  "id": 1, "name": "Amelia Taylor",        
-  "department": "Front Desk",
-  "image": "https://example.com/amelia-taylor.jpg"
-},    
-{        
-  "id": 2,        
-  "name": "Oliver Harris",        
-  "department": "Kitchen",        
-  "image": "https://example.com/oliver-harris.jpg"
-}]
-
-
-**POST /api/employees**
-
-Add a new employee for facial recognition.
-
-Parameters:
-
-- name (string): Name of the employee
-- department (string): Department of the employee (e.g., Front Desk, Kitchen)
-- image (string): URL to the image of the employee
-
-Response:
-
-{
-    "message": "Employee added successfully"
-}
-
-
-**DELETE /api/employees/:id**
-
-Remove an employee.
-
-Parameters:
-
-- id (number): ID of the employee to be removed
-
-Response:
-
-{
-    "message": "Employee removed successfully"
-}
-
-
-
 
 ### Auth
 
