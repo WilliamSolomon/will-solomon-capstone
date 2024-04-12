@@ -1,4 +1,5 @@
 import SearchBar from './components/SearchBar/SearchBar';
+import CurrentWeather from './components/CurrentWeather/CurrentWeather';
 import WeatherForecast from './components/WeatherForecast/WeatherForecast';
 import './App.css';
 import './styles/partials/_global.scss'
@@ -7,7 +8,7 @@ import { useState } from 'react';
 
 function App() {
   const [currentWeather, setCurrentWeather] = useState(null)
-  const [forecast, setForecast] = useState(null)
+  const [forecastWeather, setForecast] = useState(null)
 
   const handleOnSearchChange = (searchData) => {
     const [lat, lon] = searchData.value.split(" ");
@@ -28,12 +29,13 @@ function App() {
   }
 
   console.log("Current Weather", currentWeather)
-  console.log("Forecast", forecast)
+  console.log("Forecast", forecastWeather)
 
   return (
     <div className='app'>
       <SearchBar onSearchChange={handleOnSearchChange} />
-      {currentWeather && <WeatherForecast weatherData={currentWeather} />}
+      {currentWeather && <CurrentWeather weatherData={currentWeather} />}
+      {forecastWeather && <WeatherForecast forecastData={forecastWeather}/>}
     </div>
   );
 }

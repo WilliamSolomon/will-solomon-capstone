@@ -1,72 +1,66 @@
-.weather {
-    width: 300px;
-    border-radius: 6px;
-    box-shadow: 10px -2px 20px 2px rgb(0 0 0 / 30%);
-    color: #fff;
-    background-color: #333;
-    margin: 20px auto 0 auto;
-    padding: 0 20px 20px 20px;
-
-    &__top {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+.forecast {
+    &__title {
+        font-size: 23px;
+        font-weight: 700;
     }
 
-    &__city {
+    &__daily-item {
+        background-color: #FFF;
+        border-radius: 15px;
+        height: 40px;
+        margin: 5px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        font-size: 14px;
+        padding: 5px 20px
+    }
+
+    &__icon-small {
+        width: 40px;
+    }
+
+    &__day {
+        color: #212121;
+        flex: 1 1;
         font-weight: 600;
-        font-size: 18px;
-        line-height: 1;
-        margin: 0;
-        letter-spacing: 1px;
+        margin-left: 15px;
     }
 
     &__description {
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 1;
-        margin: 0;
+        flex: 1 1;
+        margin-right: 15px;
+        text-align: right;
     }
 
-    &__icon {
-        width: 100px;
+    &__min-max {
+        color: #757575;
     }
 
-    &__bottom {
+    &__details-grid {
+        grid-row-gap: 0;
+        grid-column-gap: 15px;
+        row-gap: 0;
+        column-gap: 15px;
+        display: grid;
+        flex: 1 1;
+        grid-template-columns: auto auto;
+        padding: 5px 15px;
+    }
+
+    &__details-grid-item {
         display: flex;
+        height: 30px;
         justify-content: space-between;
         align-items: center;
     }
 
-    &__temperature {
-        font-weight: 600;
-        font-size: 60px;
-        width: auto;
-        letter-spacing: -5px;
-        margin: 10px 0;
+    &__details-grid-item label:first-child {
+        color: #757575;
     }
 
-    &__details {
-        width: 100%;
-        padding-left: 20px;
-    }
-}
-
-.parameter {
-    &-row {
-        display: flex;
-        justify-content: space-between;
+    &__details-grid-item label:last-child {
+        color: #212121;
     }
 
-    &-label {
-        text-align: left;
-        font-weight: 400;
-        font-size: 12px;
-    }
-
-    &-value {
-        text-align: right;
-        font-weight: 600;
-        font-size: 12px;
-    }
 }
