@@ -1,4 +1,5 @@
 import SearchBar from './components/SearchBar/SearchBar';
+import WeatherForeCast from './components/WeatherForecast/WeatherForeCast';
 import './App.css';
 import './styles/partials/_global.scss'
 
@@ -11,6 +12,7 @@ function App() {
   return (
     <div className='app'>
       <SearchBar onSearchChange={handleOnSearchChange} />
+      <WeatherForeCast />
     </div>
   );
 }
