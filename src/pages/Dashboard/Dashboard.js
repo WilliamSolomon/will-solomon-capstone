@@ -1,12 +1,15 @@
+import Header from '../../components/Header/Header';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import CurrentWeather from '../../components/CurrentWeather/CurrentWeather';
 import WeatherForecast from '../../components/WeatherForecast/WeatherForecast';
+import WeatherBoard from '../../components/WeatherBoard/WeatherBoard';
 
 import './Dashboard.scss';
 import '../../styles/partials/_global.scss'
 
 import { weatherAPI_Key, weatherAPI_URL } from '../../components/GeoAPI/GeoAPIOptions';
 import { useState } from 'react';
+
 
 
 function Dashboard() {
@@ -35,11 +38,17 @@ function Dashboard() {
     console.log("Forecast", forecastWeather)
 
     return (
-        <div className='app'>
-            <SearchBar onSearchChange={handleOnSearchChange} />
-            {currentWeather && <CurrentWeather weatherData={currentWeather} />}
-            {forecastWeather && <WeatherForecast forecastData={forecastWeather} />}
-        </div>
+        <>
+            <Header />
+            <div className='main'>
+
+                <SearchBar onSearchChange={handleOnSearchChange} />
+                {/* {currentWeather && <CurrentWeather weatherData={currentWeather} />}
+                {forecastWeather && <WeatherForecast forecastData={forecastWeather} />} */}
+                {currentWeather && <WeatherBoard weatherData={currentWeather} forecastData={forecastWeather}/>}
+            </div>
+        </>
+
     );
 }
 
