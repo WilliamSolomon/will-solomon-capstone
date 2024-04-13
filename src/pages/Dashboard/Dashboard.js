@@ -9,6 +9,7 @@ import '../../styles/partials/_global.scss'
 
 import { weatherAPI_Key, weatherAPI_URL } from '../../components/GeoAPI/GeoAPIOptions';
 import { useState } from 'react';
+import AlertBoard from '../../components/AlertBoard/AlertBoard';
 
 
 
@@ -46,6 +47,7 @@ function Dashboard() {
                 {/* {currentWeather && <CurrentWeather weatherData={currentWeather} />}
                 {forecastWeather && <WeatherForecast forecastData={forecastWeather} />} */}
                 {currentWeather && <WeatherBoard weatherData={currentWeather} forecastData={forecastWeather}/>}
+                <AlertBoard />
             </div>
         </>
 
