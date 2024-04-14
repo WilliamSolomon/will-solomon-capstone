@@ -47,17 +47,17 @@ function Dashboard() {
         handleModalToggle(isModalOpen)
     }, [isModalOpen])
 
-    const handleDeleteConfirm = async () => {
-        try {
-            // await axios.delete(`http://localhost:8080/api/warehouses/${warehouse.id}`)
-            console.log("DO SOMETHING");
-        } catch (error) {
-            console.error(error)
-        } finally {
-            closeModal()
-        }
+    // const handleDeleteConfirm = async () => {
+    //     try {
+    //         // await axios.delete(`http://localhost:8080/api/warehouses/${warehouse.id}`)
+    //         console.log("DO SOMETHING");
+    //     } catch (error) {
+    //         console.error(error)
+    //     } finally {
+    //         closeModal()
+    //     }
 
-    }
+    // }
 
     // const handleOnSearchChange = (searchData) => {
     //     const [lat, lon] = searchData.value.split(" ");
