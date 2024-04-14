@@ -1,0 +1,112 @@
+@use '../../styles/partials/global';
+@import '../../styles/partials/variables';
+@import '../../styles/partials/mixins';
+
+.inventory {
+    padding: 1rem;
+    padding-bottom: 0.25rem;
+    margin-top: -5rem;
+    z-index: 1;
+
+    @include tablet {
+        padding: 0 2rem 0.25rem 2rem;
+        margin-top: -7rem;
+    }
+
+    @include desktop {
+        padding: 0 10vw 0.25rem 10vw;
+        margin-top: -7rem;
+    }
+
+    &__container {
+        border-radius: 0.25rem;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+        background-color: $White;
+
+    }
+
+    &__header {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        width: 100%;
+        border-bottom: 1px solid $Cloud;
+
+        @include tablet {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+
+            padding: 2rem;
+            border-bottom: none;
+            height: 7rem;
+        }
+
+        @include desktop {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+
+            padding: 2rem;
+            border-bottom: none;
+            height: 7rem;
+        }
+    }
+
+    &__right {
+        @include tablet {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        @include desktop {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+    }
+
+    &__title {
+        @include tablet {
+            width: 30%;
+        }
+
+        @include desktop {
+            width: 40%;
+        }
+    }
+
+    &__search {
+        width: 100%;
+        margin: 1rem 0;
+        background-image: url(../../assets/icons/search-24px.svg);
+        background-repeat: no-repeat;
+        background-position: calc(100% - 1rem) center;
+
+        @include tablet {
+            width: 25%;
+            margin: 0;
+        }
+
+        @include desktop {
+            width: 30%;
+            margin: 0;
+        }
+
+    }
+
+    &__button {
+        padding: 0rem 1rem;
+        @include tablet {
+            width: 40%;
+        }
+
+        @include desktop {
+            width: 40%;
+        }
+    }
+
+}
