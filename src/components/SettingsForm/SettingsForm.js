@@ -238,7 +238,7 @@ const SettingsForm = ({ type, id, onClose, onConfirm }) => {
                                 <option value="Mist">Mist</option>
                                 <option value="Haze">Haze</option>
                                 <option value="Tornado">Tornado</option>
-                                <option value="Clouds">Clouds</option>
+                                <option value="clouds">Clouds</option>
                             </select>
                             <div className="error-message icon" style={{ display: 'none' }}>This field is required</div>
                         </div>

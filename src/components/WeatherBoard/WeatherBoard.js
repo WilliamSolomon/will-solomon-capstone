@@ -21,7 +21,7 @@ const WeatherBoard = ({ weatherData, forecastData }) => {
 
     return (
         <>
-            <p className="weather__city">Location:{weatherData.city}</p>
+            {/* <p className="weather__city">Location:{weatherData.city}</p>
             <div className="weather">
                 <div className="weather__top">
                     <div className="weather__title">
@@ -31,7 +31,7 @@ const WeatherBoard = ({ weatherData, forecastData }) => {
                     <img alt="weather icon" className="weather__icon" src={`icons/${weatherData.weather[0].icon}.png`} />
                 </div>
                 <div className="weather__bottom">
-                    <p className="weather__temperature">{`${Math.round(weatherData.main.temp)}°F`}</p>
+                    <p className="weather__temperature">{`${Math.round(weatherData.main.temp)}°F`}</p> */}
                     {/* <div className="weather__details">
                         <div className="parameter-row">
                             <span className="parameter-label">Details</span>
@@ -54,12 +54,14 @@ const WeatherBoard = ({ weatherData, forecastData }) => {
                         </div> 
 
                     </div> */}
-                </div>
+                {/* </div>
 
-            </div> 
+            </div>  */}
 
 
-            {forecastData.list.slice(0, 7).map((item, index) => (
+            {/* {forecastData.daily.slice(0, 7).map((item, index) => ( */}
+            {forecastData.daily.slice(1, 7).map((item, index) => (
+              
             //     <AccordionItem >
             //         <AccordionItemHeading>
             //             <AccordionItemButton>
@@ -115,8 +117,9 @@ const WeatherBoard = ({ weatherData, forecastData }) => {
                         </div>
                         <img alt="weather icon" className="weather__icon" src={`icons/${item.weather[0].icon}.png`} />
                     </div>
+                    {console.log("Item Entry",item)}
                     <div className="weather__bottom">
-                        <p className="weather__temperature">{`${Math.round(item.main.temp)}°F`}</p>
+                        <p className="weather__temperature">{`${Math.round(item.temp.day)}°F`}</p>
                         {/* <div className="weather__details">
                             <div className="parameter-row">
                                 <span className="parameter-label">Details</span>

@@ -377,7 +377,7 @@ const AlertBoard = () => {
     const [loading, setLoading] = useState(true);
     const [selectedAlert, setSelectedAlert] = useState(null); // State to store the selected alert ID
     const [isModalOpen, setModalOpen] = useState(false); // State to manage modal open/close
-    const [triggerRefresh, setTriggerRefresh] = useState(null); // State to trigger refresh
+    const [triggerRefresh, setTriggerRefresh] = useState(false); // State to trigger refresh
     const userId = '2'; // Temp user_id
 
     useEffect(() => {
@@ -400,23 +400,30 @@ const AlertBoard = () => {
         setModalOpen(true); // Open the modal
     };
 
-    const handleConfirmDelete = async () => {
-        try {
-            await axios.delete(`http://localhost:8080/api/alerts/${selectedAlert}`);
-            console.log(`Alert with ID ${selectedAlert} deleted successfully`);
-            // After deletion, refetch alerts
-            const response = await axios.get(`http://localhost:8080/api/alerts/user/${userId}`);
-            setAlerts(response.data);
-        } catch (error) {
-            console.error('Error deleting alert:', error);
-        } finally {
-            console.log("Made it almost to end")
-            setSelectedAlert(null); // Reset selectedAlert state
-            setModalOpen(false); // Close the modal
-         // Update triggerRefresh to trigger re-render
-            console.log("Made it to end")
-        }
-    };
+    const updateTrigger = ()=> {
+        setTriggerRefresh(!triggerRefresh)
+    }
+
+    // const handleConfirmDelete = async () => {
+    //     try {
+    //         await axios.delete(`http://localhost:8080/api/alerts/${selectedAlert}`);
+    //         console.log(`Alert with ID ${selectedAlert} deleted successfully`);
+    //         // After deletion, refetch alerts
+    //         // const response = await axios.get(`http://localhost:8080/api/alerts/user/${userId}`);
+    //         // setAlerts(response.data);
+    //         // window.location.href="/";
+    //         setTriggerRefresh(!triggerRefresh)
+    //         console.log('Hell no');
+    //     } catch (error) {
+    //         console.error('Error deleting alert:', error);
+    //     } finally {
+    //         console.log("Made it almost to end")
+    //         setSelectedAlert(null); // Reset selectedAlert state
+    //         setModalOpen(false); // Close the modal
+    //      // Update triggerRefresh to trigger re-render
+    //         console.log("Made it to end")
+    //     }
+    // };
 
     const formatCreatedAt = (timestamp) => {
         const date = new Date(timestamp);
@@ -447,11 +454,9 @@ const AlertBoard = () => {
             <DeleteAlertModal
                 isOpen={isModalOpen}
                 onClose={() => setModalOpen(false)}
-                onConfirm={async () => {
-                    await handleConfirmDelete();
-                    setTriggerRefresh(Date.now());
-                }}
+                // onConfirm={handleConfirmDelete}
                 alertId={selectedAlert}
+                updateTrigger={updateTrigger}
             />
         </div>
     );
