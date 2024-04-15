@@ -23,6 +23,7 @@ const SettingsForm = ({ type, id, onClose, onConfirm }) => {
                 const response = await axios.get(`http://localhost:8080/api/settings/${id}`);
                 setSettingsDetails(response.data);
                 autofillFormFields(response.data);
+                console.log('Settings Details', response.data);
             } catch (error) {
                 console.error(error);
             }
@@ -44,6 +45,7 @@ const SettingsForm = ({ type, id, onClose, onConfirm }) => {
 
         const form = document.querySelector('.settings-form');
         if (form) {
+            console.log("Form present");
             const inputs = form.querySelectorAll('input, textarea, select, date');
             inputs.forEach((input) => {
                 const fieldName = input.id;
@@ -205,11 +207,11 @@ const SettingsForm = ({ type, id, onClose, onConfirm }) => {
                         <div className="settings-form__group">
                             <h3 htmlFor="status" className="settings-form__label">Status</h3>
                             <div className="settings-form__radio-group">
-                                <input className='settings-form__radio-input' id='statusActive' type="radio" name="settingStatus" value="In Stock" checked={settingsDetails.status === 'In Stock'} onChange={() => handleStatusChange('In Stock')} />
+                                <input className='settings-form__radio-input' id='statusActive' type="radio" name="settingStatus" value="Active" checked={settingsDetails.status === 'Active'} onChange={() => handleStatusChange('Active')} />
                                 <label className="settings-form__radio-label" htmlFor='statusActive'>
                                     Active
                                 </label>
-                                <input className='settings-form__radio-input' id='statusDisabled' type="radio" name="settingStatus" value="Out of Stock" checked={settingsDetails.status === 'Out of Stock'} onChange={() => handleStatusChange('Out of Stock')} />
+                                <input className='settings-form__radio-input' id='statusDisabled' type="radio" name="settingStatus" value="Disabled" checked={settingsDetails.status === 'Disabled'} onChange={() => handleStatusChange('Disabled')} />
                                 <label className="settings-form__radio-label" htmlFor='statusDisabled'>
                                     Disabled
                                 </label>
