@@ -5,6 +5,7 @@ import axios from 'axios'
 import deleteIcon from '../../assets/icons/delete_outline-24px.svg';
 import editIcon from '../../assets/icons/edit-24px.svg';
 import DeleteSettingsModal from '../DeleteSettingsModal/DeleteSettingsModal';
+import EditSettingModal from '../EditSettingsModal.js/EditSettingsModal';
 
 export default function SettingsItem({ item }) {
     const navigate = useNavigate();
@@ -28,6 +29,27 @@ export default function SettingsItem({ item }) {
         handleModalToggle(isModalOpen)
 
     }, [isModalOpen])
+
+
+    const handleEditModalToggle = (shouldEditOpen) => {
+        if (shouldEditOpen) {
+            document.body.classList.add('no-scroll');
+            openEditModal();
+        } else {
+            document.body.classList.remove('no-scroll')
+            closeEditModal()
+        }
+    }
+
+    const [isEditModalOpen, setEditModalOpen] = useState(false);
+
+    const openEditModal = () => setEditModalOpen(true);
+    const closeEditModal = () => setEditModalOpen(false);
+
+    useEffect(() => {
+        handleEditModalToggle(isEditModalOpen)
+
+    }, [isEditModalOpen])
 
     const handleDeleteConfirm = async () => {
         try {
@@ -67,7 +89,7 @@ export default function SettingsItem({ item }) {
                         </div>
                     </div>
                 </div >
-                <div className= 'settings-item__actions--even'>
+                <div className='settings-item__actions--even'>
                     <DeleteSettingsModal
                         isOpen={isModalOpen}
                         onClose={closeModal}
@@ -75,7 +97,14 @@ export default function SettingsItem({ item }) {
                         itemName={item.item_name}
                     />
                     <img className="settings-item__delete" src={deleteIcon} alt="delete settings item" onClick={openModal} />
-                    <img className="settings-item__edit" src={editIcon} alt="edit settings item" />
+                    <EditSettingModal
+                        isEditOpen={isEditModalOpen}
+                        onClose={closeEditModal}
+                        onEditClose={closeEditModal}
+                        // onConfirm={handleDeleteConfirm}
+                        id={item.id}
+                    />
+                    <img className="settings-item__edit" src={editIcon} alt="edit settings item" onClick={openEditModal}/>
                 </div>
             </section >
         </>
