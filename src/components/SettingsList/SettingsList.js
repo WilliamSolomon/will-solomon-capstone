@@ -3,11 +3,12 @@ import './SettingsList.scss'
 import { useNavigate } from 'react-router-dom';
 
 const SettingsList = ({settingsList}) => {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
-    const viewItemDetails = (item) => {
-        navigate(`/inventory/${item.id}`);
-    }
+    // const viewItemDetails = (item) => {
+    //     navigate(`/inventory/${item.id}`);
+    // }
+
     return (
         <>
             <section className="settings-list__table">
@@ -17,7 +18,7 @@ const SettingsList = ({settingsList}) => {
                 ) : (
                     settingsList.map((item) => {
                         return (
-                            <SettingsItem key={item.id} item={item} handleItem={() => viewItemDetails(item)} />
+                            <SettingsItem key={item.id} item={item} />
                         );
                     })
                 )}

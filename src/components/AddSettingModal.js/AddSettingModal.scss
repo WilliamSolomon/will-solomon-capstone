@@ -1,0 +1,198 @@
+@use '../../styles/partials/global';
+@import '../../styles/partials/variables';
+@import '../../styles/partials/mixins';
+
+.add-item {
+    width: 100%;
+    padding: 1rem;
+    padding-bottom: 0.25rem;
+    margin-top: -5rem;
+    z-index: 1;
+
+    @include tablet {
+        padding: 0 2rem 0.25rem 2rem;
+        margin-top: -7rem;
+        height: 87vh;
+    }
+
+    @include desktop {
+        padding: 0 10vw 0.25rem 10vw;
+        margin-top: -7rem;
+    }
+
+    &__container {
+        border-radius: 0.25rem;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+        background-color: $White;
+    }
+
+    &__header {
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        width: 100%;
+        border-bottom: 1px solid $Cloud;
+
+        @include tablet {
+            flex-direction: row;
+            align-items: center;
+            gap: 1rem;
+            padding: 2rem;
+            padding-bottom: 1.5rem;
+            height: 7rem;
+        }
+
+        @include desktop {
+            flex-direction: row;
+            align-items: center;
+            gap: 1rem;
+            padding: 2rem;
+            padding-bottom: 1.5rem;
+            height: 7rem;
+        }
+    }
+
+    &__back {
+        height: 2rem;
+        width: 2rem;
+        margin-right: 0.5rem;
+
+        &-container {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    &__title {
+        @include tablet {
+            width: 50%;
+        }
+
+        @include desktop {
+            width: 60%;
+        }
+    }
+
+    &-form {
+        width: 100%;
+    }
+    
+}
+
+.no-scroll {
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+}
+
+.inventory-modal {
+    &__overlay {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        
+        z-index: 2;
+
+        @include tablet {
+            background-color: $Instock-BlackBg;
+        }
+    }
+
+    &__content {
+        height: 100%;
+        position: relative;
+        background-color: $White;
+        padding: 1rem 1rem 0 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        @include tablet {
+            width: 85vw;
+            height: 30vh;
+            top: 21%
+        }
+
+        @include desktop {
+            width: 55vw;
+            height: 31vh;
+        }
+    }
+
+    &__close-container {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 1.5rem;
+
+        @include tablet {
+            margin-bottom: 0;
+        }
+    }
+
+    &__text-container {
+        width: 100%;
+        
+        @include tablet {
+            padding: 0 0 0 2rem;
+            width: 80%;
+        }
+    }
+
+    &__actions {
+        display: flex;
+        padding: 1rem 0;
+        gap: 1rem;
+
+        @include tablet {
+            justify-content: flex-end;
+            padding: 0 2rem 2.5rem 0;
+        }
+
+        @include desktop {}
+    }
+
+    &__heading {
+        margin-bottom: 1rem;
+    }
+
+    &__cancel,
+    &__delete {
+        height: 2.25rem;
+    }
+
+    &__cancel {
+        background-color: $Light-Grey;
+        border: 1px solid $Slate;
+        color: $Slate;
+
+        @include tablet {
+            width: 12%;
+        }
+
+        @include desktop {
+            width: 12%;
+        }
+
+        &:hover {
+            background-color: $Light-Grey;
+            color: $Instock-Indigo;
+            border: 1px solid $Instock-Indigo;
+        }
+    }
+
+    &__delete {
+        background-color: $Red;
+
+        @include tablet {
+            width: 12%;
+        }
+
+        @include desktop {
+            width: 12%;
+        }
+    }
+}

@@ -2,9 +2,10 @@ import React from 'react';
 import axios from 'axios';
 
 import xicon from '../../assets/icons/close-24px.svg'
+import deleteIcon from '../../assets/icons/delete_outline-24px.svg';
 
 const DeleteAlertModal = ({ isOpen, onClose, alertId }) => {
- 
+
     if (!isOpen) return null;
 
     const handleDelete = async () => {

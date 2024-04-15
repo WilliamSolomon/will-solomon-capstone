@@ -4,16 +4,17 @@ import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 
-const SettingsForm = ({ type, id }) => {
+const SettingsForm = ({ type, id, onClose, onConfirm }) => {
     const navigate = useNavigate();
-    const [settingsDetails, setSettingsDetails] = useState({status: 'In Stock',});
+    const [settingsDetails, setSettingsDetails] = useState({ status: 'Active', });
     const [showQuantityField, setShowQuantityField] = useState(false);
     const [quantity, setQuantity] = useState('0');
     const userId = '2'; // Temp user_id
 
     const handleStatusChange = (newStatus) => {
-        setSettingsDetails({ ...settingsDetails, status: newStatus, quantity: 1 });
-        setShowQuantityField(newStatus === 'In Stock');
+        // setSettingsDetails({ ...settingsDetails, status: newStatus, quantity: 1 });
+        setSettingsDetails({ ...settingsDetails, status: newStatus });
+        // setShowQuantityField(newStatus === 'In Stock');
     };
 
     useEffect(() => {
@@ -31,13 +32,13 @@ const SettingsForm = ({ type, id }) => {
         }
     }, [])
 
-    useEffect(() => {
-        setShowQuantityField(settingsDetails.status === 'In Stock');
-        setSettingsDetails(prevDetails => ({
-            ...prevDetails,
-            quantity: prevDetails.quantity || 0
-        }));
-    }, [settingsDetails.status]);
+    // useEffect(() => {
+    //     setShowQuantityField(settingsDetails.status === 'In Stock');
+    //     setSettingsDetails(prevDetails => ({
+    //         ...prevDetails,
+    //         quantity: prevDetails.quantity || 0
+    //     }));
+    // }, [settingsDetails.status]);
 
     const autofillFormFields = (settingsDetails) => {
 
@@ -126,18 +127,19 @@ const SettingsForm = ({ type, id }) => {
                 user_id, category, condition, status, specified_date
             }
 
-            const addsettings = async (settingsItem) => {
-                try {
-                    // if (status === 'Out of Stock') {
-                    //     settingsItem.quantity = '0'
-                    // }
-                    await axios.post('http://localhost:8080/api/settings', settingsItem);
-                } catch (error) {
-                    console.error(error);
+            // const addsettings = async (settingsItem) => {
+            //     try {
+            //         // if (status === 'Out of Stock') {
+            //         //     settingsItem.quantity = '0'
+            //         // }
+            //         await axios.post('http://localhost:8080/api/settings', settingsItem);
+            //     } catch (error) {
+            //         console.error(error);
 
-                }
-                navigate('/settings');
-            }
+            //     }
+            //     onClose();
+            //     // navigate('/settings');
+            // }
 
             const editsettings = async (settingsItem) => {
                 try {
@@ -149,16 +151,20 @@ const SettingsForm = ({ type, id }) => {
                 } catch (error) {
                     console.error(error);
                 }
-                navigate('/settings');
+                onClose();
+                // navigate('/settings');
+
             }
 
             e.target.reset();
 
             if (type === 'add') {
-                addsettings(settingsItem);
+                onConfirm(settingsItem);
             } else if (type === 'edit') {
                 editsettings(settingsItem);
             }
+
+
         } else {
             return;
         }
@@ -170,25 +176,29 @@ const SettingsForm = ({ type, id }) => {
                 <div className="settings-form__container">
                     <div className="settings-form__left">
                         <h2 className="settings-form__subheading">Item Details</h2>
+
                         <div className="settings-form__group">
                             <h3 htmlFor="item_name" className="settings-form__label">Specified Date</h3>
                             <input type="date" id="item_name" name="specifiedDate" className="settings-form__input" />
                             <div className="error-message icon" style={{ display: 'none' }}>This field is required</div>
                         </div>
+
                         {/* <div className="settings-form__group">
                             <h3 htmlFor="condition" className="settings-form__label">condition</h3>
                             <textarea type="text" id="condition" name="settingCondition" className="settings-form__input-textarea" placeholder='Please enter a brief condition...' />
                             <div className="error-message icon" style={{ display: 'none' }}>This field is required</div>
                         </div> */}
+
                         <div className="settings-form__group">
                             <h3 htmlFor="category" className="settings-form__label">Category</h3>
                             <select id="category" name="settingCategory" className="settings-form__select-input" defaultValue="Weather">
                                 <option value="">Please select</option>
-                                <option value="Accessories">Weather</option>
-                                <option value="Apparel">Date</option>
+                                <option value="Weather">Weather</option>
+                                <option value="Date">Date</option>
                             </select>
                             <div className="error-message icon" style={{ display: 'none' }}>This field is required</div>
                         </div>
+
                     </div>
                     <div className="settings-form__right">
                         <h2 className="settings-form__subheading">Setting Status</h2>
@@ -233,15 +243,20 @@ const SettingsForm = ({ type, id }) => {
                     </div>
                 </div>
                 <div className="settings-form__button-container">
-                    <button type='reset' className="settings-form__button settings-form__button--cancel">Cancel</button>
+                    <button className="settings-form__button settings-form__button--cancel" onClick={onClose}>Cancel</button>
                     {
                         type === 'add'
                             ?
+                            // <button type='submit' className="settings-form__button--add">+ Add Item</button>
                             <button type='submit' className="settings-form__button--add">+ Add Item</button>
                             :
                             <button type='submit' className="settings-form__button--edit">Save</button>
                     }
                 </div>
+                {/* <section className="inventory-modal__actions">
+                    <button className="inventory-modal__cancel" onClick={onClose}>Cancel</button>
+                    <button className="inventory-modal__delete" onClick={onConfirm}>Delete</button>
+                </section> */}
             </form>
         </>
     )

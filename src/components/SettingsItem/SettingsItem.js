@@ -6,7 +6,7 @@ import deleteIcon from '../../assets/icons/delete_outline-24px.svg';
 import editIcon from '../../assets/icons/edit-24px.svg';
 import DeleteSettingsModal from '../DeleteSettingsModal/DeleteSettingsModal';
 
-export default function SettingsItem({ item, handleEdit }) {
+export default function SettingsItem({ item }) {
     const navigate = useNavigate();
 
     const handleModalToggle = (shouldOpen) => {
@@ -75,7 +75,7 @@ export default function SettingsItem({ item, handleEdit }) {
                         itemName={item.item_name}
                     />
                     <img className="settings-item__delete" src={deleteIcon} alt="delete settings item" onClick={openModal} />
-                    <img className="settings-item__edit" src={editIcon} alt="edit settings item" onClick={handleEdit} />
+                    <img className="settings-item__edit" src={editIcon} alt="edit settings item" />
                 </div>
             </section >
         </>
