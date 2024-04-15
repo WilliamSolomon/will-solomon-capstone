@@ -24,7 +24,7 @@ function Delete() {
     const [currentWeather, setCurrentWeather] = useState(null)
     const [forecastWeather, setForecast] = useState(null)
     const [userCity, setUserCity] = useState("Miami-Dade County, Florida, US");
-    const [userCoord, setUserCoord] = useState({ lat: '-80.1937', lon: '25.7743' });
+    const [userCoord, setUserCoord] = useState({ lat: '25.7743', lon: '-80.1937' });
 
 
     const handleOnSearchChange = (searchData) => {

@@ -4,7 +4,7 @@ import axios from 'axios';
 import xicon from '../../assets/icons/close-24px.svg'
 import deleteIcon from '../../assets/icons/delete_outline-24px.svg';
 
-const DeleteAlertModal = ({ isOpen, onClose, alertId }) => {
+const DeleteAlertModal = ({ isOpen, onClose, alertId, updateTrigger }) => {
 
     if (!isOpen) return null;
 
@@ -12,6 +12,7 @@ const DeleteAlertModal = ({ isOpen, onClose, alertId }) => {
         try {
             await axios.delete(`http://localhost:8080/api/alerts/${alertId}`);
             console.log(`Alert with ID ${alertId} deleted successfully`);
+            updateTrigger();
         } catch (error) {
             console.error('Error deleting alert:', error);
         }

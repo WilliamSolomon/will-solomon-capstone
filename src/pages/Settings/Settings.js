@@ -13,7 +13,7 @@ const Settings = () => {
     const navigate = useNavigate();
     const [settingsList, setSettingsList] = useState([]);
     const [userCity, setUserCity] = useState("Miami-Dade County, Florida, US");
-    const [userCoord, setUserCoord] = useState({ lat: '-80.1937', lon: '25.7743' });
+    const [userCoord, setUserCoord] = useState({ lat: '25.7743', lon: '-80.1937' });
     const userId = '2'; // Temp user_id
 
     const handleModalToggle = (shouldOpen) => {

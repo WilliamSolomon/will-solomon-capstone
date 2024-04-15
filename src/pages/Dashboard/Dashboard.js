@@ -1,4 +1,4 @@
-import { weatherAPI_Key, weatherAPI_URL } from '../../components/GeoAPI/GeoAPIOptions';
+import { currentWeatherUrl, forecastWeatherUrl } from '../../components/GeoAPI/GeoAPIOptions';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
@@ -15,13 +15,17 @@ import AlertBoard from '../../components/AlertBoard/AlertBoard';
 import './Dashboard.scss';
 import '../../styles/partials/_global.scss'
 import deleteIcon from '../../assets/icons/delete_outline-24px.svg';
-
+ 
 
 function Dashboard() {
     const [currentWeather, setCurrentWeather] = useState(null)
     const [forecastWeather, setForecast] = useState(null)
     const [userCity, setUserCity] = useState("Miami-Dade County, Florida, US");
-    const [userCoord, setUserCoord] = useState({ lat: '-80.1937', lon: '25.7743' });
+    // const [userCity, setUserCity] = useState("Brooklyn, NY, US");
+    const [userCoord, setUserCoord] = useState({ lat: '25.7743', lon: '-80.1937' });
+    // const [userCoord, setUserCoord] = useState({ lat: '40.6782', lon: '73.9442' });
+    const userId = '2'; // Temp user_id
+
 
     const navigate = useNavigate();
 
@@ -44,11 +48,22 @@ function Dashboard() {
         handleModalToggle(isModalOpen)
     }, [isModalOpen])
 
+
+    
+
     const loadWeather = () => {
         const { lat, lon } = userCoord;
 
-        const currentWeatherFetch = fetch(`${weatherAPI_URL}/weather?lat=${lat}&lon=${lon}&appid=${weatherAPI_Key}&units=imperial`);
-        const forecastWeatherFetch = fetch(`${weatherAPI_URL}/forecast?lat=${lat}&lon=${lon}&appid=${weatherAPI_Key}&units=imperial`);
+        // const currentWeatherFetch = fetch(`${weatherAPI_URL}/weather?lat=${lat}&lon=${lon}&appid=${weatherAPI_Key}&units=imperial`);
+
+        console.log("currentWeatherUrl",`${currentWeatherUrl}/${userId}?lat=${userCoord.lat}&lon=${userCoord.lon}`);
+        console.log("forecastWeatherUrl",`${forecastWeatherUrl}/${userId}?lat=${userCoord.lat}&lon=${userCoord.lon}`);
+
+        const currentWeatherFetch = fetch(`${currentWeatherUrl}/${userId}?lat=${userCoord.lat}&lon=${userCoord.lon}`);
+        // const forecastWeatherFetch = fetch(`${weatherAPI_URL}/forecast?lat=${lat}&lon=${lon}&exclude=hourly&appid=${weatherAPI_Key}&units=imperial`);
+        // const forecastWeatherFetch = fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=hourly&appid=${weatherAPI_Key}&units=imperial`);
+        const forecastWeatherFetch = fetch(`${forecastWeatherUrl}/${userId}?lat=${userCoord.lat}&lon=${userCoord.lon}`);
+
 
         Promise.all([currentWeatherFetch, forecastWeatherFetch])
             .then(async (response) => {
