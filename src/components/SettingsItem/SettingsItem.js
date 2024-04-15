@@ -7,7 +7,7 @@ import editIcon from '../../assets/icons/edit-24px.svg';
 import DeleteSettingsModal from '../DeleteSettingsModal/DeleteSettingsModal';
 import EditSettingModal from '../EditSettingsModal.js/EditSettingsModal';
 
-export default function SettingsItem({ item }) {
+export default function SettingsItem({ item, updateTrigger }) {
     const navigate = useNavigate();
 
     const handleModalToggle = (shouldOpen) => {
@@ -58,7 +58,8 @@ export default function SettingsItem({ item }) {
         } catch (error) {
             console.error(error)
         } finally {
-            closeModal()
+            closeModal();
+            updateTrigger();
         }
 
     }
