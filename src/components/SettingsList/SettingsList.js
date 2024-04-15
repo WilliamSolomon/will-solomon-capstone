@@ -2,7 +2,7 @@ import SettingsItem from '../SettingsItem/SettingsItem';
 import './SettingsList.scss'
 import { useNavigate } from 'react-router-dom';
 
-const SettingsList = ({settingsList}) => {
+const SettingsList = ({settingsList, updateTrigger}) => {
     // const navigate = useNavigate();
 
     // const viewItemDetails = (item) => {
@@ -18,7 +18,7 @@ const SettingsList = ({settingsList}) => {
                 ) : (
                     settingsList.map((item) => {
                         return (
-                            <SettingsItem key={item.id} item={item} />
+                            <SettingsItem updateTrigger={updateTrigger} key={item.id} item={item} />
                         );
                     })
                 )}
