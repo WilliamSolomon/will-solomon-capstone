@@ -7,6 +7,7 @@ import Header from '../../components/Header/Header';
 
 import deleteIcon from '../../assets/icons/delete_outline-24px.svg';
 import SearchModal from '../../components/SearchModal/SearchModal';
+import AddSettingModal from '../../components/AddSettingModal.js/AddSettingModal';
 
 const Settings = () => {
     const navigate = useNavigate();
@@ -25,14 +26,32 @@ const Settings = () => {
         }
     }
 
+    const handleSettingsModalToggle = (shouldOpen) => {
+        if (shouldOpen) {
+            document.body.classList.add('no-scroll');
+            openSettingsModal();
+        } else {
+            document.body.classList.remove('no-scroll')
+            closeSettingsModal();
+        }
+    }
+
     const [isModalOpen, setModalOpen] = useState(false);
+    const [isSettingsModalOpen, setSettingsModalOpen] = useState(false);
 
     const openModal = () => setModalOpen(true);
     const closeModal = () => setModalOpen(false);
 
+    const openSettingsModal = () => setSettingsModalOpen(true);
+    const closeSettingsModal = () => setSettingsModalOpen(false);
+
     useEffect(() => {
         handleModalToggle(isModalOpen)
     }, [isModalOpen])
+
+    useEffect(() => {
+        handleSettingsModalToggle(isSettingsModalOpen)
+    }, [isSettingsModalOpen])
 
     useEffect(() => {
         const getSettingsList = async () => {
@@ -44,10 +63,24 @@ const Settings = () => {
             }
         }
         getSettingsList();
-    }, [settingsList])
+    }, [])
 
-    const handleAddItem = () => {
-        navigate('/settings/add');
+    const handleAddSetting = async (newSetting) => {
+        try {
+            // if (status === 'Out of Stock') {
+            //     settingsItem.quantity = '0'
+            // }
+            const response = await axios.post('http://localhost:8080/api/settings', newSetting);
+            const addedSetting = response.data; // Assuming the response contains the newly added setting
+            setSettingsList(prevSettings => [addedSetting, ...prevSettings]); // Update settingsList with the newly added setting
+
+        } catch (error) {
+            console.error(error);
+
+        }
+        // onClose();
+        // navigate('/settings');
+        closeSettingsModal();
     }
 
     const handleSearchChange = (searchData) => {
@@ -90,7 +123,32 @@ const Settings = () => {
                                         onClick={openModal} />
                                 </div>
 
-                                <button className="settings__button" onClick={handleAddItem}>+ Add New Item</button>
+                                <div className="settings-item__actions">
+                                    <AddSettingModal
+                                        isSettingsOpen={isSettingsModalOpen}
+                                        onClose={closeSettingsModal}
+                                        onConfirm={handleAddSetting}
+                                    // itemName={warehouse.warehouse_name}
+                                    />
+                                    {/* <img
+                                        className="settings-item__delete"
+                                        src={deleteIcon}
+                                        alt="delete settings item"
+                                    /> */}
+
+                                    <button
+                                        className="settings__button"
+                                        onClick={openSettingsModal}>
+                                        + Add New Item</button>
+                                    {/* <button
+                                        className="settings__button"
+                                        onClick={handleAddItem}>
+                                        + Add New Item</button> */}
+
+
+                                </div>
+
+
                             </div>
                         </section>
                         <section className="settings__list">

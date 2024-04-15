@@ -17,9 +17,6 @@ import '../../styles/partials/_global.scss'
 import deleteIcon from '../../assets/icons/delete_outline-24px.svg';
 
 
-
-
-
 function Dashboard() {
     const [currentWeather, setCurrentWeather] = useState(null)
     const [forecastWeather, setForecast] = useState(null)
