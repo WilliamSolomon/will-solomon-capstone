@@ -17,6 +17,7 @@ const DeleteAlertModal = ({ isOpen, onClose, alertId, updateTrigger }) => {
             console.error('Error deleting alert:', error);
         }
         onClose();
+        updateTrigger()
     };
 
     return (

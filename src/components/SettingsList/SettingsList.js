@@ -12,7 +12,7 @@ const SettingsList = ({settingsList, updateTrigger}) => {
     return (
         <>
             <section className="settings-list__table">
-                {settingsList.length === 0 && <h2 className='settings-list__table--none'>No settings found. Click the + to add a weather condition or date to monitor weather.</h2>}
+                {settingsList.length === 0 && <h2 className='settings-list__table--none'>No settings found. Click the Add Alert to a weather condition to monitor.</h2>}
                 {!settingsList ? (
                     <h2>Loading...</h2>
                 ) : (

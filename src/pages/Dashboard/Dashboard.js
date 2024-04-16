@@ -48,15 +48,15 @@ function Dashboard() {
     }, [isModalOpen])
 
 
-    
+
 
     const loadWeather = () => {
         const { lat, lon } = userCoord;
 
         // const currentWeatherFetch = fetch(`${weatherAPI_URL}/weather?lat=${lat}&lon=${lon}&appid=${weatherAPI_Key}&units=imperial`);
 
-        console.log("currentWeatherUrl",`${currentWeatherUrl}/${userId}?lat=${userCoord.lat}&lon=${userCoord.lon}`);
-        console.log("forecastWeatherUrl",`${forecastWeatherUrl}/${userId}?lat=${userCoord.lat}&lon=${userCoord.lon}`);
+        console.log("currentWeatherUrl", `${currentWeatherUrl}/${userId}?lat=${userCoord.lat}&lon=${userCoord.lon}`);
+        console.log("forecastWeatherUrl", `${forecastWeatherUrl}/${userId}?lat=${userCoord.lat}&lon=${userCoord.lon}`);
 
         const currentWeatherFetch = fetch(`${currentWeatherUrl}/${userId}?lat=${userCoord.lat}&lon=${userCoord.lon}`);
         // const forecastWeatherFetch = fetch(`${weatherAPI_URL}/forecast?lat=${lat}&lon=${lon}&exclude=hourly&appid=${weatherAPI_Key}&units=imperial`);
@@ -116,10 +116,14 @@ function Dashboard() {
                             onClick={openModal} />
 
                     </div>
-                
-                    {currentWeather && <CurrentWeather weatherData={currentWeather} />}
-               
-                    {currentWeather && <WeatherBoard weatherData={currentWeather} forecastData={forecastWeather} />}
+                    <section className='dashboard__weather'>
+                        <section className='dashboard__weather-current'>
+                            {currentWeather && <CurrentWeather weatherData={currentWeather} />}
+                        </section>
+                        <section className='dashboard__weather-forecast'>
+                            {currentWeather && <WeatherBoard weatherData={currentWeather} forecastData={forecastWeather} />}
+                        </section>
+                    </section>
                     <AlertBoard />
                 </div>
             </main>

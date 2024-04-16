@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import "./AlertBoard.scss"
 
 import deleteIcon from '../../assets/icons/delete_outline-24px.svg';
 import DeleteAlertModal from '../DeleteAlertModal/DeleteAlertModal';
@@ -69,13 +70,13 @@ const AlertBoard = () => {
 
     return (
         <div className="alerts__container">
-            <h2 className="alerts__title">Upcoming Weather</h2>
+            <h2 className="alerts__title">Weather Alerts</h2>
             <ul>
                 {alerts.map(alert => (
-                    <div className="alert-card" key={alert.id}>
-                        <div className="alert-card__day">{alert.category}</div>
-                        <div className="alert-card__condition">{alert.condition}</div>
-                        <div className="alert-card__date">{formatCreatedAt(alert.created_at)}</div>
+                    <div className="alerts__card" key={alert.id}>
+                        {/* <div className="alert-card__day">{alert.category}</div> */}
+                        <div className="alerts__card-condition">{alert.condition}</div>
+                        <div className="alert__card-date">{formatCreatedAt(alert.created_at)}</div>
                         <button onClick={() => handleDeleteAlert(alert.id)}>
                             <img src={deleteIcon} alt="Delete" />
                         </button>

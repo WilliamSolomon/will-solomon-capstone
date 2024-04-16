@@ -30,7 +30,6 @@ export default function SettingsItem({ item, updateTrigger }) {
 
     }, [isModalOpen])
 
-
     const handleEditModalToggle = (shouldEditOpen) => {
         if (shouldEditOpen) {
             document.body.classList.add('no-scroll');
@@ -102,6 +101,7 @@ export default function SettingsItem({ item, updateTrigger }) {
                         isEditOpen={isEditModalOpen}
                         onClose={closeEditModal}
                         onEditClose={closeEditModal}
+                        onConfirm={updateTrigger}
                         // onConfirm={handleDeleteConfirm}
                         id={item.id}
                     />
