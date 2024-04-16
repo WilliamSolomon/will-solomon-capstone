@@ -129,6 +129,8 @@ const AddSettingForm = ({ type, id, onClose, onConfirm }) => {
                 user_id, category, condition, status, specified_date
             }
 
+            console.log("Settings Item", settingsItem);
+
             // const addsettings = async (settingsItem) => {
             //     try {
             //         // if (status === 'Out of Stock') {
