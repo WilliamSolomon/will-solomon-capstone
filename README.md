@@ -3,7 +3,7 @@ WeatherCap App
 
 ## Overview
 
-WeatherCap is an app that photography enthusiasts can use to receive alerts for specific weather conditions or for weather updates for a specific date.
+WeatherCap is an app that photography enthusiasts can use to receive alerts for and track specific weather conditions.
 
 ### Problem
 

@@ -8,10 +8,16 @@ const DeleteAlertModal = ({ isOpen, onClose, alertId, updateTrigger }) => {
 
     if (!isOpen) return null;
 
+    //  Change alert's status to 'Archived'
     const handleDelete = async () => {
         try {
-            await axios.delete(`http://localhost:8080/api/alerts/${alertId}`);
-            console.log(`Alert with ID ${alertId} deleted successfully`);
+
+            const deletionStatus = {
+                "status": "archived"
+            }
+
+            await axios.put(`http://localhost:8080/api/alerts/${alertId}`, deletionStatus);
+            console.log(`Alert with ID ${alertId} archived successfully`);
             updateTrigger();
         } catch (error) {
             console.error('Error deleting alert:', error);
