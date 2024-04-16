@@ -144,7 +144,7 @@ const Settings = () => {
                                     <button
                                         className="settings__button"
                                         onClick={openSettingsModal}>
-                                        + Add New Item</button>
+                                        Add Alert</button>
                                     {/* <button
                                         className="settings__button"
                                         onClick={handleAddItem}>

@@ -1,0 +1,13 @@
+.dashboard {
+
+    &__weather {
+        display: flex;
+    }
+
+    &__weather-forecast {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+
+}
