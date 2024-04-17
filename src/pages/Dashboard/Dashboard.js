@@ -1,7 +1,9 @@
 import { currentWeatherUrl, forecastWeatherUrl } from '../../components/GeoAPI/GeoAPIOptions';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios'
+import { jwtDecode } from "jwt-decode";
+
+
 
 import Header from '../../components/Header/Header';
 import SearchModal from '../../components/SearchModal/SearchModal';
@@ -14,16 +16,54 @@ import AlertBoard from '../../components/AlertBoard/AlertBoard';
 
 import './Dashboard.scss';
 import '../../styles/partials/_global.scss'
+import authenticateUser from '../../utils/authenticateUser';
 import deleteIcon from '../../assets/icons/delete_outline-24px.svg';
 
 function Dashboard() {
+    //// JWT Authentication
+    const [user, setUser] = useState(null);
+    const [failedAuth, setFailedAuth] = useState(false);
+
+    useEffect(() => {
+        const authorizeUser = async () => {
+            try {
+                const userData = await authenticateUser();
+                setUser(userData);
+            } catch (error) {
+                setFailedAuth(true);
+            }
+        };
+        authorizeUser();
+    }, []);
+
+    const handleLogout = () => {
+        sessionStorage.removeItem('token');
+        setUser(null);
+        setFailedAuth(true);
+    };
+
+    //// Dashboard Component 
+
     const [currentWeather, setCurrentWeather] = useState(null)
     const [forecastWeather, setForecast] = useState(null)
     const [userCity, setUserCity] = useState("Miami-Dade County, Florida, US");
-    // const [userCity, setUserCity] = useState("Brooklyn, NY, US");
+    // // const [userCity, setUserCity] = useState("Brooklyn, NY, US");
     const [userCoord, setUserCoord] = useState({ lat: '25.7743', lon: '-80.1937' });
     // const [userCoord, setUserCoord] = useState({ lat: '40.6782', lon: '73.9442' });
-    const userId = '2'; // Temp user_id
+   
+    
+    // const token = localStorage.getItem('token');
+    // const decodedToken = jwt_decode(token);
+    // const userId = decodedToken.id;
+
+    const token = localStorage.getItem('token');
+    const decodedToken = jwtDecode(token);
+    // const [userCity, setUserCity] = useState(decodedToken.coord);
+    // const [userCoord, setUserCoord] = useState({ lat: decodedToken.coord.lat, lon: decodedToken.coord.lon });
+    const userId = decodedToken.id;
+
+
+    console.log('UserId',userId);
 
 
     const navigate = useNavigate();
@@ -46,9 +86,6 @@ function Dashboard() {
     useEffect(() => {
         handleModalToggle(isModalOpen)
     }, [isModalOpen])
-
-
-
 
     const loadWeather = () => {
         const { lat, lon } = userCoord;

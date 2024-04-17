@@ -2,6 +2,9 @@ import './AddSettingForm.scss'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { jwtDecode } from "jwt-decode";
+
+
 
 
 const AddSettingForm = ({ type, id, onClose, onConfirm }) => {
@@ -9,7 +12,13 @@ const AddSettingForm = ({ type, id, onClose, onConfirm }) => {
     const [settingsDetails, setSettingsDetails] = useState({ status: 'Active', });
     const [showQuantityField, setShowQuantityField] = useState(false);
     const [quantity, setQuantity] = useState('0');
-    const userId = '2'; // Temp user_id
+
+    const token = localStorage.getItem('token');
+    const decodedToken = jwtDecode(token);
+    const userId = decodedToken.id;
+
+
+    console.log('UserId',userId);
 
     const handleStatusChange = (newStatus) => {
         // setSettingsDetails({ ...settingsDetails, status: newStatus, quantity: 1 });

@@ -1,5 +1,8 @@
 import { weatherAPI_Key, weatherAPI_URL } from '../../components/GeoAPI/GeoAPIOptions';
 import { useState, useEffect } from 'react';
+import { jwtDecode } from "jwt-decode";
+
+
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 
@@ -26,6 +29,11 @@ function Delete() {
     const [userCity, setUserCity] = useState("Miami-Dade County, Florida, US");
     const [userCoord, setUserCoord] = useState({ lat: '25.7743', lon: '-80.1937' });
 
+    const token = localStorage.getItem('token');
+    const decodedToken = jwtDecode(token);
+    // const [userCity, setUserCity] = useState(decodedToken.coord);
+    // const [userCoord, setUserCoord] = useState({ lat: decodedToken.coord.lat, lon: decodedToken.coord.lon });
+    const userId = decodedToken.id;
 
     const handleOnSearchChange = (searchData) => {
         const [lat, lon] = searchData.value.split(" ");
