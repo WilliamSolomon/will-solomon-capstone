@@ -4,6 +4,9 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import SettingsList from '../../components/SettingsList/SettingsList';
 import Header from '../../components/Header/Header';
+import { jwtDecode } from 'jwt-decode'
+
+
 
 import deleteIcon from '../../assets/icons/delete_outline-24px.svg';
 import SearchModal from '../../components/SearchModal/SearchModal';
@@ -12,10 +15,16 @@ import AddSettingModal from '../../components/AddSettingModal.js/AddSettingModal
 const Settings = () => {
     const navigate = useNavigate();
     const [settingsList, setSettingsList] = useState([]);
-    const [userCity, setUserCity] = useState("Miami-Dade County, Florida, US");
-    const [userCoord, setUserCoord] = useState({ lat: '25.7743', lon: '-80.1937' });
     const [triggerRefresh, setTriggerRefresh] = useState(false);
-    const userId = '2'; // Temp user_id
+  
+    const token = localStorage.getItem('token');
+    const decodedToken = jwtDecode(token);
+    const [userCity, setUserCity] = useState(decodedToken.coord);
+    const [userCoord, setUserCoord] = useState({ lat: decodedToken.coord.lat, lon: decodedToken.coord.lon });
+    const userId = decodedToken.id;
+
+
+    console.log('UserId',userId);
 
     const updateTrigger = ()=> {
         setTriggerRefresh(!triggerRefresh)

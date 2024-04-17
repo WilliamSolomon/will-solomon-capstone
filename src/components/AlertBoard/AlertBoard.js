@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { jwtDecode } from "jwt-decode";
+
 import axios from 'axios';
 import "./AlertBoard.scss"
 
@@ -11,7 +13,13 @@ const AlertBoard = () => {
     const [selectedAlert, setSelectedAlert] = useState(null); // State to store the selected alert ID
     const [isModalOpen, setModalOpen] = useState(false); // State to manage modal open/close
     const [triggerRefresh, setTriggerRefresh] = useState(false); // State to trigger refresh
-    const userId = '2'; // Temp user_id
+
+    const token = localStorage.getItem('token');
+    const decodedToken = jwtDecode(token);
+    const userId = decodedToken.id;
+
+
+    console.log('UserId',userId);
 
     useEffect(() => {
         const fetchAlerts = async () => {
