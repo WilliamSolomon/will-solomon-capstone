@@ -16,6 +16,7 @@ const AddSettingForm = ({ type, id, onClose, onConfirm }) => {
     const token = localStorage.getItem('token');
     const decodedToken = jwtDecode(token);
     const userId = decodedToken.id;
+  
 
 
     console.log('UserId',userId);
@@ -73,6 +74,7 @@ const AddSettingForm = ({ type, id, onClose, onConfirm }) => {
         const user_id = userId
         const category = 'Weather';
         const status = "Active";
+        const city = decodedToken.city
         // let quantity = e.target.itemQuantity?.value;
         const condition = e.target.settingsCondition.value;
 
@@ -135,7 +137,7 @@ const AddSettingForm = ({ type, id, onClose, onConfirm }) => {
 
         if (isValid) {
             const settingsItem = {
-                user_id, category, condition, status, specified_date
+                user_id, category, condition, status, specified_date, city
             }
 
             console.log("Settings Item", settingsItem);
