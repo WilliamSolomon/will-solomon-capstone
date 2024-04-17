@@ -16,13 +16,14 @@ const Settings = () => {
     const navigate = useNavigate();
     const [settingsList, setSettingsList] = useState([]);
     const [triggerRefresh, setTriggerRefresh] = useState(false);
+    // const [userCity, setUserCity] = useState("Miami-Dade County, Florida, US");
+    // const [userCoord, setUserCoord] = useState({ lat: '25.7743', lon: '-80.1937' });
   
     const token = localStorage.getItem('token');
     const decodedToken = jwtDecode(token);
-    const [userCity, setUserCity] = useState(decodedToken.coord);
-    const [userCoord, setUserCoord] = useState({ lat: decodedToken.coord.lat, lon: decodedToken.coord.lon });
+    const [userCity, setUserCity] = useState(decodedToken.city);
+    const [userCoord, setUserCoord] = useState(decodedToken.coord);
     const userId = decodedToken.id;
-
 
     console.log('UserId',userId);
 
