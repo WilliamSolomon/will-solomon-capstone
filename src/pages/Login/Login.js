@@ -10,12 +10,7 @@ function Login() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-		// Now that the user is registered we need to log thewm in
-		// Make a POST request to "http://localhost:8080/api/users/login"
-		// This post takes email and password
-		// use response.data.token to retrieve token
-		// sessionStorage to setItem to our token with the name token
-		// use react router dom to navigate to home page
+	
 
 		try {
 			const response = await axios.post('http://localhost:8080/api/users/login', {
