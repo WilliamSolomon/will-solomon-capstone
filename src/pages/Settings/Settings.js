@@ -7,8 +7,7 @@ import Header from '../../components/Header/Header';
 import { jwtDecode } from 'jwt-decode'
 
 
-
-import deleteIcon from '../../assets/icons/delete_outline-24px.svg';
+import searchIcon from '../../assets/icons/search-24px.svg';
 import SearchModal from '../../components/SearchModal/SearchModal';
 import AddSettingModal from '../../components/AddSettingModal.js/AddSettingModal';
 
@@ -16,18 +15,14 @@ const Settings = () => {
     const navigate = useNavigate();
     const [settingsList, setSettingsList] = useState([]);
     const [triggerRefresh, setTriggerRefresh] = useState(false);
-    // const [userCity, setUserCity] = useState("Miami-Dade County, Florida, US");
-    // const [userCoord, setUserCoord] = useState({ lat: '25.7743', lon: '-80.1937' });
-  
+
     const token = localStorage.getItem('token');
     const decodedToken = jwtDecode(token);
     const [userCity, setUserCity] = useState(decodedToken.city);
     const [userCoord, setUserCoord] = useState(decodedToken.coord);
     const userId = decodedToken.id;
 
-    console.log('UserId',userId);
-
-    const updateTrigger = ()=> {
+    const updateTrigger = () => {
         setTriggerRefresh(!triggerRefresh)
     }
 
@@ -82,9 +77,6 @@ const Settings = () => {
 
     const handleAddSetting = async (newSetting) => {
         try {
-            // if (status === 'Out of Stock') {
-            //     settingsItem.quantity = '0'
-            // }
             const response = await axios.post('http://localhost:8080/api/settings', newSetting);
             const addedSetting = response.data; // Assuming the response contains the newly added setting
             setSettingsList(prevSettings => [addedSetting, ...prevSettings]); // Update settingsList with the newly added setting
@@ -92,8 +84,6 @@ const Settings = () => {
             console.error(error);
 
         }
-        // onClose();
-        // navigate('/settings');
         closeSettingsModal();
         updateTrigger();
     }
@@ -112,55 +102,45 @@ const Settings = () => {
                 <section className="settings">
                     <div className="settings__container">
                         <section className="settings__header">
-                            <h1 className="settings__title">Settings</h1>
+                            <h2 className="settings__title">Settings</h2>
                             <div className="settings__right">
+                                <div className='settings__location-container'>
+                                    <h3 className='dashboard__title'>
+                                        CURRENT LOCATION: {userCity}
+                                    </h3>
+                                    <div className="dashboard__actions">
+                                        <SearchModal
+                                            isOpen={isModalOpen}
+                                            onClose={closeModal}
+                                            onConfirm={() => {
+                                                sessionStorage.setItem('user_city', userCity);
+                                                sessionStorage.setItem('user_lat', userCoord.lat);
+                                                sessionStorage.setItem('user_lon', userCoord.lon);
+                                                closeModal();
+                                            }}
+                                            onSearchChange={handleSearchChange} // Pass handleSearchChange as a prop
+                                        />
 
-                                <p className='dashboard__title'>
-                                    CURRENT LOCATION: {userCity}
-                                </p>
-                                <div className="dashboard__actions">
-                                    <SearchModal
-                                        isOpen={isModalOpen}
-                                        onClose={closeModal}
-                                        onConfirm={() => {
-                                            sessionStorage.setItem('user_city', userCity);
-                                            sessionStorage.setItem('user_lat', userCoord.lat);
-                                            sessionStorage.setItem('user_lon', userCoord.lon);
-                                            closeModal();
-                                        }}
-                                        onSearchChange={handleSearchChange} // Pass handleSearchChange as a prop
-                                    />
-
-                                    <img
-                                        className="dashboard__location-update"
-                                        src={deleteIcon}
-                                        alt="update location icon"
-                                        onClick={openModal} />
+                                        <img
+                                            className="dashboard__location-update"
+                                            src={searchIcon}
+                                            alt="update location icon"
+                                            onClick={openModal} />
+                                    </div>
                                 </div>
+
 
                                 <div className="settings-item__actions">
                                     <AddSettingModal
                                         isSettingsOpen={isSettingsModalOpen}
                                         onClose={closeSettingsModal}
                                         onConfirm={handleAddSetting}
-                                    // itemName={warehouse.warehouse_name}
                                     />
-                                    {/* <img
-                                        className="settings-item__delete"
-                                        src={deleteIcon}
-                                        alt="delete settings item"
-                                    /> */}
 
                                     <button
                                         className="settings__button"
                                         onClick={openSettingsModal}>
                                         Add Alert</button>
-                                    {/* <button
-                                        className="settings__button"
-                                        onClick={handleAddItem}>
-                                        + Add New Item</button> */}
-
-
                                 </div>
 
 

@@ -18,8 +18,6 @@ const WeatherForecast = ({ forecastData }) => {
         weekDays.slice(0, dayOfWeek)
     );
 
-    console.log(forecastDays);
-
     return (
         <>
             <label className="forecast__title">Daily</label>

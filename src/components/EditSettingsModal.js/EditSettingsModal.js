@@ -16,10 +16,6 @@ export default function EditSettingModal({ isEditOpen, onClose, onConfirm, id })
                                 <section className='settings-modal__close-container'>
                                     <img className="settings-modal__close" onClick={onClose} src={xicon} />
                                 </section>
-                                {/* <section className='settings-modal__text-container'>
-                                    <h1 className='settings-modal__heading'>Delete {itemName} settings item?</h1>
-                                    <p>Please confirm that you’d like to delete {itemName} from the settings list. You won’t be able to undo this action.</p>
-                                </section> */}
                                 <section className="add-setting__form">
                                     <h1 className='add-setting__title'>Edit Setting</h1>
                                     <EditSettingForm type="edit" id={id} onClose={onClose} onConfirm={onConfirm} />

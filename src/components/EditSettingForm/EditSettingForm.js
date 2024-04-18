@@ -10,20 +10,13 @@ import { jwtDecode } from "jwt-decode";
 const EditSettingForm = ({ type, id, onClose, onConfirm }) => {
     const navigate = useNavigate();
     const [settingsDetails, setSettingsDetails] = useState({});
-    // const [showQuantityField, setShowQuantityField] = useState(false);
-    // const [quantity, setQuantity] = useState('0');
    
     const token = localStorage.getItem('token');
     const decodedToken = jwtDecode(token);
     const userId = decodedToken.id;
 
-
-    console.log('UserId',userId);
-
     const handleStatusChange = (newStatus) => {
-        // setSettingsDetails({ ...settingsDetails, status: newStatus, quantity: 1 });
         setSettingsDetails({ ...settingsDetails, status: newStatus });
-        // setShowQuantityField(newStatus === 'In Stock');
     };
 
     useEffect(() => {
@@ -32,7 +25,6 @@ const EditSettingForm = ({ type, id, onClose, onConfirm }) => {
                 const response = await axios.get(`http://localhost:8080/api/settings/${id}`);
                 setSettingsDetails(response.data);
                 autofillFormFields(response.data);
-                console.log('Settings Details', response.data);
             } catch (error) {
                 console.error(error);
             }
@@ -42,20 +34,10 @@ const EditSettingForm = ({ type, id, onClose, onConfirm }) => {
         }
     }, [])
 
-    // useEffect(() => {
-    //     setShowQuantityField(settingsDetails.status === 'In Stock');
-    //     setSettingsDetails(prevDetails => ({
-    //         ...prevDetails,
-    //         quantity: prevDetails.quantity || 0
-    //     }));
-    // }, [settingsDetails.status]);
-
     const autofillFormFields = (settingsDetails) => {
 
         const form = document.querySelector('.settings-form');
         if (form) {
-            console.log("Form present");
-            console.log("Setting Details", settingsDetails)
             const inputs = form.querySelectorAll('input, textarea, select, date');
             inputs.forEach((input) => {
                 const fieldName = input.id;
@@ -74,13 +56,7 @@ const EditSettingForm = ({ type, id, onClose, onConfirm }) => {
         const user_id = userId
         const category = 'Weather';
         const status = settingsDetails.status
-        // const status = document.querySelector('input[name="settingStatus"]:checked').value;
-        // let quantity = e.target.itemQuantity?.value;
         const condition = e.target.settingsCondition.value;
-
-        // if (category === 'weather') {
-        //     specified_date = null;
-        // }
 
         let isValid = true;
 
@@ -169,10 +145,6 @@ const EditSettingForm = ({ type, id, onClose, onConfirm }) => {
                     <button className="settings-form__button settings-form__button--cancel" onClick={onClose}>Cancel</button>
                     <button type='submit' className="settings-form__button--edit">Save</button>
                 </div>
-                {/* <section className="inventory-modal__actions">
-                    <button className="inventory-modal__cancel" onClick={onClose}>Cancel</button>
-                    <button className="inventory-modal__delete" onClick={onConfirm}>Delete</button>
-                </section> */}
             </form>
         </>
     )
