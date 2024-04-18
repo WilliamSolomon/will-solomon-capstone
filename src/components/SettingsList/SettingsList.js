@@ -1,13 +1,7 @@
 import SettingsItem from '../SettingsItem/SettingsItem';
 import './SettingsList.scss'
-import { useNavigate } from 'react-router-dom';
 
 const SettingsList = ({settingsList, updateTrigger}) => {
-    // const navigate = useNavigate();
-
-    // const viewItemDetails = (item) => {
-    //     navigate(`/inventory/${item.id}`);
-    // }
 
     return (
         <>

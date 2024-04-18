@@ -17,7 +17,7 @@ function Login() {
 				email: event.target.email.value,
 				password: event.target.password.value,
 			})
-			console.log(response.data);
+
 			// Store token to session storage
 			localStorage.setItem('token', response.data.token);
 			navigate('/')

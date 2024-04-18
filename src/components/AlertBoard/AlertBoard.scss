@@ -1,5 +1,40 @@
 .alerts {
+
+    &__container {
+        padding: 32px 0 32px 0
+    }
+
+    &__cards-container {
+        padding-top: 16px;
+    }
+
+    &__card-condition {
+        text-transform: capitalize;
+        font-weight: 600;
+        font-size: 20px;
+        color: #FFF;
+    }
+
+    &__card-date {
+        text-transform: capitalize;
+        font-weight: 600;
+        font-size: 20px;
+        color: #FFF;
+    }
+
+
     &__card {
         display: flex;
+        width: 400px;
+        border: solid 1px #ffb80360;
+        padding: 8px 16px 8px 16px;
+        justify-content: space-between;
+        background-color: #219EBC;
+        border-radius: 5px;
+        margin-bottom: 16px;
+    }
+
+    &__card-delete {
+        width: 32px !important;
     }
 }

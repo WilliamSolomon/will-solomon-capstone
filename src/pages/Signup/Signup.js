@@ -40,7 +40,7 @@ function Signup() {
 				setError("");
 				event.target.reset();
 				// Navigate to login page after successful signup
-				navigate("/login"); // Use navigate to redirect
+				navigate("/login"); 
 			}
 		} catch (error) {
 			setError("Something went wrong");
@@ -53,9 +53,6 @@ function Signup() {
 		setUserCoord({ lat, lon });
 	}
 
-	console.log("userCity", userCity);
-	console.log("userCoord:", userCoord);
-
 	return (
 		<main className="signup-page">
 			<form className="signup" onSubmit={handleSubmit}>
@@ -66,6 +63,7 @@ function Signup() {
 				<Input type="text" name="email" label="Email" />
 				<Input type="password" name="password" label="Password" />
 				<Input type="password" name="confirmPassword" label="Confirm Password" />
+				<label>Select Your Location</label>
 				<SearchBar onSearchChange={handleSearchChange} />
 
 				<button className="signup__button">Sign up</button>

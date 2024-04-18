@@ -10,10 +10,7 @@ export default function Header() {
     const handleDashboardClick = () => {
         setActivePage('dashboard');
     }
-    
-    const handleAlertsClick = () => {
-        setActivePage('alerts');
-    }
+
 
     const handleSettingsClick = () => {
         setActivePage('settings');
@@ -22,8 +19,6 @@ export default function Header() {
     useEffect(() => {
         if (location.pathname.includes("/dashboard")) {
             setActivePage('dashboard');
-        // } else if (location.pathname.includes("/alerts")) {
-        //     setActivePage('alerts');
         } else if (location.pathname.includes("/settings")) {
             setActivePage('settings');
         }
@@ -40,6 +35,7 @@ export default function Header() {
                             alt="WeatherCap Logo"
                             onClick={handleDashboardClick}
                         />
+                        <h1>WeatherCap</h1>
                     </Link>
                 </section>
                 <section className='nav-bar__button-container'>
@@ -54,17 +50,6 @@ export default function Header() {
                             </button>
                         </Link>
                     </div>
-                    {/* <div className='nav-bar__button-right'>
-                        <Link to="/alerts">
-                            <button
-                                className={`nav-bar__button-alerts ${activePage === 'alerts' ? 'nav-bar__button-alerts--active' : ''}`}
-                                type="button"
-                                onClick={handleAlertsClick}
-                            >
-                                Alerts
-                            </button>
-                        </Link>
-                    </div> */}
                     <div className='nav-bar__button-right'>
                         <Link to="/settings">
                             <button

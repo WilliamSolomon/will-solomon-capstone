@@ -3,27 +3,38 @@
     border-radius: 6px;
     box-shadow: 10px -2px 20px 2px rgb(0 0 0 / 30%);
     color: #fff;
-    background-color: #333;
+    background-color: #219EBC;
     margin: 20px auto 0 auto;
     padding: 0 20px 20px 20px;
+    border: solid 1px #ffffff5d;
+
+    &-card {
+        margin-left: 32px;
+    }
 
     &__top {
         display: flex;
-        // justify-content: space-between;
-        // align-items: center;
+    }
+
+    &__dayOfWeek {
+        color: #FFB703;
+        font-weight: 600;
+        font-size: 32px;
     }
 
     &__city {
         font-weight: 600;
-        font-size: 18px;
+        font-size: 32px;
         line-height: 1;
         margin: 0;
         letter-spacing: 1px;
     }
 
     &__description {
-        font-weight: 400;
-        font-size: 14px;
+        text-transform: capitalize;
+
+        font-weight: 600;
+        font-size: 20px;
         line-height: 1;
         margin: 0;
     }

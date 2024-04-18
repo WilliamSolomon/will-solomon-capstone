@@ -4,7 +4,7 @@
 
 .header{
     background-color: $Graphite;
-    padding: 0.25rem 1rem 0 1rem;
+    padding: 4px 240px 0 240px;
     z-index: -1;
 
     @include tablet{
@@ -12,7 +12,7 @@
     }
 
     @include desktop{
-        padding: 0.75rem 10vw 0 10vw;
+        padding: 12px 240px 0 240px;
     }
 }
 
@@ -34,7 +34,7 @@
     &__image-container{
         display: flex;
         justify-content: center;
-        padding: 1.25rem 0 1.25rem 0;
+        // padding: 1.25rem 0 1.25rem 0;
 
         @include tablet{
             margin-right: 1.25rem;
@@ -43,6 +43,11 @@
         @include desktop{
             margin-right: 1.25rem;
         }
+    }
+
+    &__image-container a {
+        display: flex;
+        align-items: center;
     }
 
     &__image {
@@ -64,6 +69,10 @@
         }
     }
 
+    &__button-right{
+        margin-left: 8px;
+    }
+
     &__button-left, &__button-right{
         width: 50%;
         
@@ -79,6 +88,10 @@
             justify-content: flex-end;
         }
         
+    }
+
+    &__button-right-container{
+        margin-left: 8x;
     }
 
     &__button-warehouse, &__button-inventory{

@@ -5,6 +5,7 @@
 
 
 .settings-form {
+    background-color: #FFF;
     &__container {
         display: flex;
         flex-direction: column;
@@ -18,7 +19,7 @@
 
         @include desktop {
             flex-direction: row;
-            padding: 2rem 0;
+            // padding: 2rem 0;
         }
     }
 
@@ -133,7 +134,7 @@
         justify-content: space-between;
         gap: 1rem;
         padding: 1rem 1.5rem;
-        background-color: $Light-Grey;
+        background-color: #FFF;
 
         @include tablet {
             padding: 1rem 2rem;

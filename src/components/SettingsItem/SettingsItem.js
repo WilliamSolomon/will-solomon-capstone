@@ -8,7 +8,6 @@ import DeleteSettingsModal from '../DeleteSettingsModal/DeleteSettingsModal';
 import EditSettingModal from '../EditSettingsModal.js/EditSettingsModal';
 
 export default function SettingsItem({ item, updateTrigger }) {
-    const navigate = useNavigate();
 
     const handleModalToggle = (shouldOpen) => {
         if (shouldOpen) {
@@ -102,7 +101,6 @@ export default function SettingsItem({ item, updateTrigger }) {
                         onClose={closeEditModal}
                         onEditClose={closeEditModal}
                         onConfirm={updateTrigger}
-                        // onConfirm={handleDeleteConfirm}
                         id={item.id}
                     />
                     <img className="settings-item__edit" src={editIcon} alt="edit settings item" onClick={openEditModal}/>

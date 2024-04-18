@@ -1,23 +1,17 @@
 import { currentWeatherUrl, forecastWeatherUrl } from '../../components/GeoAPI/GeoAPIOptions';
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { jwtDecode } from "jwt-decode";
-
-
 
 import Header from '../../components/Header/Header';
 import SearchModal from '../../components/SearchModal/SearchModal';
-import SearchBar from '../../components/SearchBar/SearchBar';
 import CurrentWeather from '../../components/CurrentWeather/CurrentWeather';
-import WeatherForecast from '../../components/WeatherForecast/WeatherForecast';
 import WeatherBoard from '../../components/WeatherBoard/WeatherBoard';
 import AlertBoard from '../../components/AlertBoard/AlertBoard';
-
 
 import './Dashboard.scss';
 import '../../styles/partials/_global.scss'
 import authenticateUser from '../../utils/authenticateUser';
-import deleteIcon from '../../assets/icons/delete_outline-24px.svg';
+import searchIcon from '../../assets/icons/search-24px.svg';
 
 function Dashboard() {
     //// JWT Authentication
@@ -46,30 +40,12 @@ function Dashboard() {
 
     const [currentWeather, setCurrentWeather] = useState(null)
     const [forecastWeather, setForecast] = useState(null)
-    // const [userCity, setUserCity] = useState("Miami-Dade County, Florida, US");
-    // // const [userCity, setUserCity] = useState("Brooklyn, NY, US");
-    // const [userCoord, setUserCoord] = useState({ lat: '25.7743', lon: '-80.1937' });
-    // const [userCoord, setUserCoord] = useState({ lat: '40.6782', lon: '73.9442' });
-   
-    
-    // const token = localStorage.getItem('token');
-    // const decodedToken = jwt_decode(token);
-    // const userId = decodedToken.id;
-
+ 
     const token = localStorage.getItem('token');
     const decodedToken = jwtDecode(token);
     const [userCity, setUserCity] = useState(decodedToken.city);
     const [userCoord, setUserCoord] = useState(decodedToken.coord);
     const userId = decodedToken.id;
-
-    console.log("Decoded Coordinates",decodedToken.coord);
-
-    console.log("Uesr Coords",userCoord);
-
-    console.log('UserId',userId);
-
-
-    const navigate = useNavigate();
 
     const handleModalToggle = (shouldOpen) => {
         if (shouldOpen) {
@@ -93,16 +69,8 @@ function Dashboard() {
     const loadWeather = () => {
         const { lat, lon } = userCoord;
 
-        // const currentWeatherFetch = fetch(`${weatherAPI_URL}/weather?lat=${lat}&lon=${lon}&appid=${weatherAPI_Key}&units=imperial`);
-
-        console.log("currentWeatherUrl", `${currentWeatherUrl}/${userId}?lat=${userCoord.lat}&lon=${userCoord.lon}`);
-        console.log("forecastWeatherUrl", `${forecastWeatherUrl}/${userId}?lat=${userCoord.lat}&lon=${userCoord.lon}`);
-
         const currentWeatherFetch = fetch(`${currentWeatherUrl}/${userId}?lat=${userCoord.lat}&lon=${userCoord.lon}`);
-        // const forecastWeatherFetch = fetch(`${weatherAPI_URL}/forecast?lat=${lat}&lon=${lon}&exclude=hourly&appid=${weatherAPI_Key}&units=imperial`);
-        // const forecastWeatherFetch = fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=hourly&appid=${weatherAPI_Key}&units=imperial`);
         const forecastWeatherFetch = fetch(`${forecastWeatherUrl}/${userId}?lat=${userCoord.lat}&lon=${userCoord.lon}`);
-
 
         Promise.all([currentWeatherFetch, forecastWeatherFetch])
             .then(async (response) => {
@@ -119,9 +87,6 @@ function Dashboard() {
         loadWeather();
     }, []);
 
-    console.log("Current Weather", currentWeather)
-    console.log("Forecast", forecastWeather)
-
     const handleSearchChange = (searchData) => {
         setUserCity(searchData.label);
         const [lat, lon] = searchData.value.split(" ");
@@ -133,10 +98,11 @@ function Dashboard() {
             <Header />
             <main>
                 <div className="dashboard">
-                    <p className='dashboard__title'>
-                        DASHBOARD TITLE: {userCity}
-                    </p>
+                    <h2 className='dashboard__title'>
+                        Good afternoon, Will!
+                    </h2>
                     <div className="dashboard__actions">
+                        {userCity}
                         <SearchModal
                             isOpen={isModalOpen}
                             onClose={closeModal}
@@ -151,7 +117,7 @@ function Dashboard() {
                         />
                         <img
                             className="dashboard__location-update"
-                            src={deleteIcon}
+                            src={searchIcon}
                             alt="update location icon"
                             onClick={openModal} />
 
