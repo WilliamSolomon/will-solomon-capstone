@@ -1,5 +1,5 @@
 import './Settings.scss';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import SettingsList from '../../components/SettingsList/SettingsList';
@@ -10,44 +10,27 @@ import { jwtDecode } from 'jwt-decode'
 import searchIcon from '../../assets/icons/search-24px.svg';
 import SearchModal from '../../components/SearchModal/SearchModal';
 import AddSettingModal from '../../components/AddSettingModal.js/AddSettingModal';
+import { Link } from 'react-router-dom';
 
 const Settings = () => {
-    const navigate = useNavigate();
+    const [user, setUser] = useState(null);
+    const [failedAuth, setFailedAuth] = useState(false);
+    const [token, setToken] = useState(null)
+
     const [settingsList, setSettingsList] = useState([]);
     const [triggerRefresh, setTriggerRefresh] = useState(false);
 
-    const token = localStorage.getItem('token');
-    const decodedToken = jwtDecode(token);
-    const [userCity, setUserCity] = useState(decodedToken.city);
-    const [userCoord, setUserCoord] = useState(decodedToken.coord);
-    const userId = decodedToken.id;
+    // const token = localStorage.getItem('token');
+   
+    const [userCity, setUserCity] = useState(null);
+    const [userCoord, setUserCoord] = useState(null);
+
+    const [isModalOpen, setModalOpen] = useState(false);
+    const [isSettingsModalOpen, setSettingsModalOpen] = useState(false);
 
     const updateTrigger = () => {
         setTriggerRefresh(!triggerRefresh)
     }
-
-    const handleModalToggle = (shouldOpen) => {
-        if (shouldOpen) {
-            document.body.classList.add('no-scroll');
-            openModal();
-        } else {
-            document.body.classList.remove('no-scroll')
-            closeModal()
-        }
-    }
-
-    const handleSettingsModalToggle = (shouldOpen) => {
-        if (shouldOpen) {
-            document.body.classList.add('no-scroll');
-            openSettingsModal();
-        } else {
-            document.body.classList.remove('no-scroll')
-            closeSettingsModal();
-        }
-    }
-
-    const [isModalOpen, setModalOpen] = useState(false);
-    const [isSettingsModalOpen, setSettingsModalOpen] = useState(false);
 
     const openModal = () => setModalOpen(true);
     const closeModal = () => setModalOpen(false);
@@ -56,14 +39,92 @@ const Settings = () => {
     const closeSettingsModal = () => setSettingsModalOpen(false);
 
     useEffect(() => {
-        handleModalToggle(isModalOpen)
-    }, [isModalOpen])
+        // getItem from sessionStorage token
+        const storageToken = localStorage.getItem('token');
+        setToken(storageToken);
+
+        // const token = localStorage.getItem('token');
+
+
+        // If theres not a token then setFailedAuth to true and return 
+        if (!storageToken) {
+            setFailedAuth(true)
+        }
+        // Otherwise we will check to see if the current user is authorized to be on this dashboard
+
+
+        const authorizeUser = async () => {
+            try {
+                // Make a get request to "http://localhost:8080/api/users/current"
+                const response = await axios.get('http://localhost:8080/api/users/current', {
+                    headers: {
+                        Authorization: `Bearer ${storageToken}`
+                    }
+                })
+
+                console.log(response.data);
+                setUser(response.data)
+                // Pass bearer token in the headers
+                // set user as response.data
+
+
+            } catch (error) {
+                console.log(error);
+                setFailedAuth(true)
+            }
+        }
+        authorizeUser()
+        // Pass Headers on this request 
+        // use the Authorization key to pass a Bearer token
+        // Use string interpolation to pass `Bearer ${token}` as value for authorization
+        // On successful response setUser to response.data
+        // On failure setFailed auth to true
+
+    }, []);
+
+
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        setUser(null);
+        setFailedAuth(true);
+    };
 
     useEffect(() => {
-        handleSettingsModalToggle(isSettingsModalOpen)
-    }, [isSettingsModalOpen])
+        const handleModalToggle = (shouldOpen) => {
+            if (shouldOpen) {
+                document.body.classList.add('no-scroll');
+                openModal();
+            } else {
+                document.body.classList.remove('no-scroll')
+                closeModal()
+            }
+        }
+        handleModalToggle(isModalOpen);
+    }, [isModalOpen]);
 
     useEffect(() => {
+        const handleSettingsModalToggle = (shouldOpen) => {
+            if (shouldOpen) {
+                document.body.classList.add('no-scroll');
+                openSettingsModal();
+            } else {
+                document.body.classList.remove('no-scroll')
+                closeSettingsModal();
+            }
+        }
+        handleSettingsModalToggle(isSettingsModalOpen);
+    }, [isSettingsModalOpen]);
+
+    useEffect(() => {
+
+        if (!token) {
+            return; // Exit early if token is null
+        }
+        console.log("Token: ", token);
+
+        const decodedToken = jwtDecode(token);
+        const userId = decodedToken.id;
+
         const getSettingsList = async () => {
             try {
                 let response = await axios.get(`http://localhost:8080/api/settings/user/${userId}`);
@@ -74,6 +135,25 @@ const Settings = () => {
         }
         getSettingsList();
     }, [triggerRefresh])
+
+    if (failedAuth) {
+        return (
+            <main className="dashboard">
+                <p>You must be logged in to see this page.</p>
+                <p>
+                    <Link to="/login">Log in</Link>
+                </p>
+            </main>
+        );
+    }
+
+    if (user === null) {
+        return (
+            <main className="dashboard">
+                <p>Loading...</p>
+            </main>
+        );
+    }
 
     const handleAddSetting = async (newSetting) => {
         try {

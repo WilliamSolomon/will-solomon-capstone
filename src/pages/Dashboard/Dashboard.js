@@ -78,29 +78,7 @@ function Dashboard() {
         setFailedAuth(true);
     };
 
-    // const loadWeather = () => {
-    //     const { lat, lon } = userCoord;
-
-    //     const currentWeatherFetch = fetch(`${currentWeatherUrl}/${userId}?lat=${userCoord.lat}&lon=${userCoord.lon}`);
-    //     const forecastWeatherFetch = fetch(`${forecastWeatherUrl}/${userId}?lat=${userCoord.lat}&lon=${userCoord.lon}`);
-
-    //     Promise.all([currentWeatherFetch, forecastWeatherFetch])
-    //         .then(async (response) => {
-    //             const weatherResponse = await response[0].json();
-    //             const forecastResponse = await response[1].json();
-
-    //             setCurrentWeather({ city: userCity, ...weatherResponse });
-    //             setForecast({ city: userCity, ...forecastResponse });
-    //         })
-    //         .catch((error) => console.error(error));
-    // }
-
-    // useEffect(() => {
-    //     loadWeather();
-    // }, []);
-
     useEffect(() => {
-        // const { lat, lon } = userCoord;
 
         if (!token) {
             return; // Exit early if token is null
