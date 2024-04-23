@@ -64,9 +64,7 @@ const Settings = () => {
 
                 console.log(response.data);
                 setUser(response.data)
-                // Pass bearer token in the headers
-                // set user as response.data
-
+          
 
             } catch (error) {
                 console.log(error);
@@ -74,11 +72,6 @@ const Settings = () => {
             }
         }
         authorizeUser()
-        // Pass Headers on this request 
-        // use the Authorization key to pass a Bearer token
-        // Use string interpolation to pass `Bearer ${token}` as value for authorization
-        // On successful response setUser to response.data
-        // On failure setFailed auth to true
 
     }, []);
 
@@ -134,7 +127,7 @@ const Settings = () => {
             }
         }
         getSettingsList();
-    }, [triggerRefresh])
+    }, [token, triggerRefresh])
 
     if (failedAuth) {
         return (
