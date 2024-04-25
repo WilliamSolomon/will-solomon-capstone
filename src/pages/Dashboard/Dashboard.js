@@ -37,6 +37,7 @@ function Dashboard() {
 
         // If theres not a token then setFailedAuth to true and return 
         if (!storageToken) {
+            console.log("No storage token");
             setFailedAuth(true)
         }
         // Otherwise we will check to see if the current user is authorized to be on this dashboard
@@ -44,6 +45,7 @@ function Dashboard() {
 
         const authorizeUser = async () => {
             try {
+                console.log("authUser Storage token", storageToken);
                 // Make a get request to "http://localhost:8080/api/users/current"
                 const response = await axios.get('http://localhost:8080/api/users/current', {
                     headers: {
@@ -51,7 +53,7 @@ function Dashboard() {
                     }
                 })
 
-                console.log(response.data);
+               
                 setUser(response.data)
                 // Pass bearer token in the headers
                 // set user as response.data
