@@ -4,14 +4,13 @@ import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
 import axios from "axios";
 import Input from "../../components/Input/Input";
 import SearchBar from "../../components/SearchBar/SearchBar";
-import { logDOM } from "@testing-library/react";
 
 function Signup() {
 	const [error, setError] = useState("");
 	const [success, setSuccess] = useState(false);
 	const navigate = useNavigate(); // Initialize useNavigate hook
 	const [userCity, setUserCity] = useState("");
-	const [userCoord, setUserCoord] = useState({ lat: '', lon: '' });
+	const [userCoord, setUserCoord] = useState({ latitude: '', longitude: '' });
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
@@ -31,8 +30,8 @@ function Signup() {
 				first_name: event.target.first_name.value,
 				last_name: event.target.last_name.value,
 				city: userCity,
-				lat: userCoord.lat,
-				lon: userCoord.lon
+				latitude: userCoord.latitude,
+				longitude: userCoord.longitude
 			});
 
 			if (response) {
@@ -49,8 +48,8 @@ function Signup() {
 
 	const handleSearchChange = (searchData) => {
 		setUserCity(searchData.label);
-		const [lat, lon] = searchData.value.split(" ");
-		setUserCoord({ lat, lon });
+		const [latitude, longitude] = searchData.value.split(" ");
+		setUserCoord({ latitude, longitude });
 	}
 
 	return (
