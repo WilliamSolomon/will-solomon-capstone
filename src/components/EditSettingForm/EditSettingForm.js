@@ -7,7 +7,7 @@ import { jwtDecode } from "jwt-decode";
 
 
 
-const EditSettingForm = ({ type, id, onClose, onConfirm }) => {
+const EditSettingForm = ({ type, id, onClose, updateTrigger }) => {
     const navigate = useNavigate();
     const [settingsDetails, setSettingsDetails] = useState({});
    
@@ -23,12 +23,15 @@ const EditSettingForm = ({ type, id, onClose, onConfirm }) => {
         const getSettingsDetails = async () => {
             try {
                 const response = await axios.get(`http://localhost:8080/api/settings/${id}`);
-                setSettingsDetails(response.data);
-                autofillFormFields(response.data);
+                setSettingsDetails(response.data[0]);
+                autofillFormFields(response.data[0]);
+
+                console.log("Get Settngs Data Response",response.data);
             } catch (error) {
                 console.error(error);
             }
         }
+
         if (type === 'edit' && id) {
             getSettingsDetails();
         }
@@ -84,7 +87,7 @@ const EditSettingForm = ({ type, id, onClose, onConfirm }) => {
                 user_id, category, condition, status, specified_date
             }
 
-            const editsettings = async () => {
+            const editSettings = async () => {
                 try {
                     await axios.put(`http://localhost:8080/api/settings/${id}`, settingsItem);
                 } catch (error) {
@@ -93,9 +96,9 @@ const EditSettingForm = ({ type, id, onClose, onConfirm }) => {
             }
 
             e.target.reset();
-            editsettings(settingsItem);
+            editSettings(settingsItem);
             onClose();
-            onConfirm();
+            updateTrigger();
 
         } else {
             return;

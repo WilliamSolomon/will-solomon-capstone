@@ -21,10 +21,11 @@ function Dashboard() {
     const [failedAuth, setFailedAuth] = useState(false);
     const [currentWeather, setCurrentWeather] = useState(null)
     const [forecastWeather, setForecast] = useState(null)
-    // const [userCity, setUserCity] = useState(null);
+    const [userCity, setUserCity] = useState(null);
     // const [userCoord, setUserCoord] = useState(null);
     const [isModalOpen, setModalOpen] = useState(false);
     const [token, setToken] = useState(null)
+    const [userFirstName, setUserFirstName] = useState(null)
     // const [userId, setUserId] = useState(null)
 
     useEffect(() => {
@@ -53,7 +54,7 @@ function Dashboard() {
                     }
                 })
 
-               
+
                 setUser(response.data)
                 // Pass bearer token in the headers
                 // set user as response.data
@@ -90,10 +91,15 @@ function Dashboard() {
         const decodedToken = jwtDecode(token);
 
         const userId = decodedToken.id;
-        const userCity = decodedToken.city;
+        setUserCity(decodedToken.city);
         const userCoord = decodedToken.coord;
 
-        console.log("User Coordinates: ", userCoord );
+        setUserFirstName(decodedToken.first_name)
+
+
+
+        console.log("User Coordinates: ", userCoord);
+        console.log("User Forecast City: ", userCity);
 
         const currentWeatherFetch = fetch(`${currentWeatherUrl}/${userId}?lat=${userCoord.lat}&lon=${userCoord.lon}`);
         const forecastWeatherFetch = fetch(`${forecastWeatherUrl}/${userId}?lat=${userCoord.lat}&lon=${userCoord.lon}`);
@@ -108,12 +114,6 @@ function Dashboard() {
             })
             .catch((error) => console.error(error));;
     }, [token]);
-
-    // const handleSearchChange = (searchData) => {
-    //     setUserCity(searchData.label);
-    //     const [lat, lon] = searchData.value.split(" ");
-    //     setUserCoord({ lat, lon });
-    // }
 
     useEffect(() => {
         handleModalToggle(isModalOpen)
@@ -159,7 +159,7 @@ function Dashboard() {
             <main>
                 <div className="dashboard">
                     <h2 className='dashboard__title'>
-                        Good afternoon, Will!
+                        Hello, {userFirstName}! Location: {userCity}
                     </h2>
                     <button className="dashboard__logout" onClick={handleLogout}>
                         Log out

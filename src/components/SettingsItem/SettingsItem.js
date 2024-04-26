@@ -64,7 +64,7 @@ export default function SettingsItem({ item, updateTrigger }) {
 
     return (
         <>
-            <section className="settings-item">
+            <section className="settings-item" key={item.id}>
                 <div className='settings-item__container'>
                     <div className='settings-item__left--even'>
                         <div className="settings-item__group">
@@ -100,7 +100,7 @@ export default function SettingsItem({ item, updateTrigger }) {
                         isEditOpen={isEditModalOpen}
                         onClose={closeEditModal}
                         onEditClose={closeEditModal}
-                        onConfirm={updateTrigger}
+                        updateTrigger={updateTrigger}
                         id={item.id}
                     />
                     <img className="settings-item__edit" src={editIcon} alt="edit settings item" onClick={openEditModal}/>
