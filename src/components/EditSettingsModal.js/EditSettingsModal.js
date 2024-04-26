@@ -3,7 +3,7 @@ import SettingsForm from '../SettingsForm/SettingsForm';
 import xicon from '../../assets/icons/close-24px.svg'
 import EditSettingForm from '../EditSettingForm/EditSettingForm';
 
-export default function EditSettingModal({ isEditOpen, onClose, onConfirm, id }) {
+export default function EditSettingModal({ isEditOpen, onClose, updateTrigger, id }) {
     if (!isEditOpen) return null;
 
     return (
@@ -18,7 +18,7 @@ export default function EditSettingModal({ isEditOpen, onClose, onConfirm, id })
                                 </section>
                                 <section className="add-setting__form">
                                     <h1 className='add-setting__title'>Edit Setting</h1>
-                                    <EditSettingForm type="edit" id={id} onClose={onClose} onConfirm={onConfirm} />
+                                    <EditSettingForm type="edit" id={id} onClose={onClose} updateTrigger={updateTrigger} />
                                 </section>
                             </section>
                         </div>
