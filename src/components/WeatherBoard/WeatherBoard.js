@@ -1,13 +1,13 @@
 import "./WeatherBoard.scss";
 
 const weekDays = [
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-    "Sunday"
+    "Mon",
+    "Tues",
+    "Wed",
+    "Thurs",
+    "Fri",
+    "Sat",
+    "Sun"
 ];
 
 const WeatherBoard = ({ weatherData, forecastData }) => {

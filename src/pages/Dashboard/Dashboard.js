@@ -38,7 +38,6 @@ function Dashboard() {
 
         // If theres not a token then setFailedAuth to true and return 
         if (!storageToken) {
-            console.log("No storage token");
             setFailedAuth(true)
         }
         // Otherwise we will check to see if the current user is authorized to be on this dashboard
@@ -46,7 +45,6 @@ function Dashboard() {
 
         const authorizeUser = async () => {
             try {
-                console.log("authUser Storage token", storageToken);
                 // Make a get request to "http://localhost:8080/api/users/current"
                 const response = await axios.get('http://localhost:8080/api/users/current', {
                     headers: {
@@ -86,20 +84,13 @@ function Dashboard() {
         if (!token) {
             return; // Exit early if token is null
         }
-        console.log("Token: ", token);
 
         const decodedToken = jwtDecode(token);
 
         const userId = decodedToken.id;
         setUserCity(decodedToken.city);
         const userCoord = decodedToken.coord;
-
         setUserFirstName(decodedToken.first_name)
-
-
-
-        console.log("User Coordinates: ", userCoord);
-        console.log("User Forecast City: ", userCity);
 
         const currentWeatherFetch = fetch(`${currentWeatherUrl}/${userId}?lat=${userCoord.lat}&lon=${userCoord.lon}`);
         const forecastWeatherFetch = fetch(`${forecastWeatherUrl}/${userId}?lat=${userCoord.lat}&lon=${userCoord.lon}`);
@@ -164,27 +155,6 @@ function Dashboard() {
                     <button className="dashboard__logout" onClick={handleLogout}>
                         Log out
                     </button>
-                    {/* <div className="dashboard__actions">
-                        {userCity}
-                        <SearchModal
-                            isOpen={isModalOpen}
-                            onClose={closeModal}
-                            onConfirm={() => {
-                                localStorage.setItem('user_city', userCity);
-                                localStorage.setItem('user_lat', userCoord.lat);
-                                localStorage.setItem('user_lon', userCoord.lon);
-                                closeModal();
-                                loadWeather();
-                            }}
-                            onSearchChange={handleSearchChange} // Pass handleSearchChange as a prop
-                        />
-                        <img
-                            className="dashboard__location-update"
-                            src={searchIcon}
-                            alt="update location icon"
-                            onClick={openModal} />
-
-                    </div> */}
                     <section className='dashboard__weather'>
                         <section className='dashboard__weather-current'>
                             {currentWeather && <CurrentWeather weatherData={currentWeather} />}

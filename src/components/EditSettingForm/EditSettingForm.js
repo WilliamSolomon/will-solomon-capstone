@@ -4,13 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { jwtDecode } from "jwt-decode";
 
-
-
-
 const EditSettingForm = ({ type, id, onClose, updateTrigger }) => {
     const navigate = useNavigate();
     const [settingsDetails, setSettingsDetails] = useState({});
-   
+
     const token = localStorage.getItem('token');
     const decodedToken = jwtDecode(token);
     const userId = decodedToken.id;
@@ -25,8 +22,6 @@ const EditSettingForm = ({ type, id, onClose, updateTrigger }) => {
                 const response = await axios.get(`http://localhost:8080/api/settings/${id}`);
                 setSettingsDetails(response.data[0]);
                 autofillFormFields(response.data[0]);
-
-                console.log("Get Settngs Data Response",response.data);
             } catch (error) {
                 console.error(error);
             }

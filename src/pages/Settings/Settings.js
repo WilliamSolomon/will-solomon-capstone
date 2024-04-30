@@ -21,7 +21,7 @@ const Settings = () => {
     const [triggerRefresh, setTriggerRefresh] = useState(false);
 
     // const token = localStorage.getItem('token');
-   
+
     const [userCity, setUserCity] = useState(null);
     const [userCoord, setUserCoord] = useState(null);
 
@@ -43,15 +43,11 @@ const Settings = () => {
         const storageToken = localStorage.getItem('token');
         setToken(storageToken);
 
-        // const token = localStorage.getItem('token');
-
-
         // If theres not a token then setFailedAuth to true and return 
         if (!storageToken) {
             setFailedAuth(true)
         }
         // Otherwise we will check to see if the current user is authorized to be on this dashboard
-
 
         const authorizeUser = async () => {
             try {
@@ -61,21 +57,14 @@ const Settings = () => {
                         Authorization: `Bearer ${storageToken}`
                     }
                 })
-
-                console.log(response.data);
                 setUser(response.data)
-          
-
             } catch (error) {
                 console.log(error);
                 setFailedAuth(true)
             }
         }
         authorizeUser()
-
     }, []);
-
-
     const handleLogout = () => {
         localStorage.removeItem('token');
         setUser(null);
@@ -113,8 +102,7 @@ const Settings = () => {
         if (!token) {
             return; // Exit early if token is null
         }
-        console.log("Token: ", token);
-
+        
         const decodedToken = jwtDecode(token);
         const userId = decodedToken.id;
 
@@ -171,7 +159,6 @@ const Settings = () => {
         <>
             <main>
                 <Header />
-
                 <section className="settings">
                     <div className="settings__container">
                         <section className="settings__header">
@@ -193,7 +180,6 @@ const Settings = () => {
                                             }}
                                             onSearchChange={handleSearchChange} // Pass handleSearchChange as a prop
                                         />
-
                                         <img
                                             className="dashboard__location-update"
                                             src={searchIcon}
@@ -201,22 +187,17 @@ const Settings = () => {
                                             onClick={openModal} />
                                     </div>
                                 </div>
-
-
                                 <div className="settings-item__actions">
                                     <AddSettingModal
                                         isSettingsOpen={isSettingsModalOpen}
                                         onClose={closeSettingsModal}
                                         onConfirm={handleAddSetting}
                                     />
-
                                     <button
                                         className="settings__button"
                                         onClick={openSettingsModal}>
                                         Add Alert</button>
                                 </div>
-
-
                             </div>
                         </section>
                         <section className="settings__list">

@@ -33,7 +33,6 @@ function Signup() {
 				latitude: userCoord.latitude,
 				longitude: userCoord.longitude
 			});
-
 			if (response) {
 				setSuccess(true);
 				setError("");
@@ -56,7 +55,6 @@ function Signup() {
 		<main className="signup-page">
 			<form className="signup" onSubmit={handleSubmit}>
 				<h1 className="signup__title">Sign up</h1>
-
 				<Input type="text" name="first_name" label="First name" />
 				<Input type="text" name="last_name" label="Last name" />
 				<Input type="text" name="email" label="Email" />
@@ -64,9 +62,7 @@ function Signup() {
 				<Input type="password" name="confirmPassword" label="Confirm Password" />
 				<label>Select Your Location</label>
 				<SearchBar onSearchChange={handleSearchChange} />
-
 				<button className="signup__button">Sign up</button>
-
 				{success && <div className="signup__message">Signed up!</div>}
 				{error && <div className="signup__message">{error}</div>}
 			</form>
