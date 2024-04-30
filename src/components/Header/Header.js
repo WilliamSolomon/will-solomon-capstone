@@ -11,7 +11,6 @@ export default function Header() {
         setActivePage('dashboard');
     }
 
-
     const handleSettingsClick = () => {
         setActivePage('settings');
     }

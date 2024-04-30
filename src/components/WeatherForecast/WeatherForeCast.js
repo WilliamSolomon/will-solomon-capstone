@@ -35,7 +35,6 @@ const WeatherForecast = ({ forecastData }) => {
                                     <label className="forecast__description">{item.weather[0].description}</label>
                                     <label className="forecast__min-max">{Math.round(item.main.temp_min)}°F / {Math.round(item.main.temp_max)}°F</label>
                                 </div>
-
                             </AccordionItemButton>
                         </AccordionItemHeading>
                         <AccordionItemPanel>

@@ -8,7 +8,6 @@ export const GeoAPIOptions = {
 
 export const geoAPIURL = 'https://wft-geo-db.p.rapidapi.com/v1/geo';
 
-
 export const weatherAPI_URL = "https://api.openweathermap.org/data/2.5";
 
 export const weatherAPI_Key = "a5a17f987e8d6c4387c94da7684f8979"

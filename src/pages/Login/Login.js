@@ -18,8 +18,6 @@ function Login() {
 				password: event.target.password.value,
 			})
 
-            console.log("Login info: ", event.target.email.value, event.target.password.value);
-
 			// Store token to session storage
 			localStorage.setItem('token', response.data.token);
 			navigate('/')

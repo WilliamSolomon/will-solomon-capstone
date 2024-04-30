@@ -5,7 +5,6 @@ const CurrentWeather = ({weatherData}) => {
         <div className="weather__current-container">
             <div className="weather__top">
                 <div className="weather__title">
-                    {/* <p className="weather__city">{weatherData.city}</p> */}
                     <p className="weather__city">Today</p>
                     <p className="weather__description">{weatherData.weather[0].description}</p>
                 </div>
