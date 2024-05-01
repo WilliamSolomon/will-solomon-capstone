@@ -1,0 +1,63 @@
+@use '../../styles/partials/global';
+@import '../../styles/partials/variables';
+@import '../../styles/partials/mixins';
+
+.current-weather {
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+
+    &__left {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding-right: 1.5rem;
+        border-right: solid 4px $WC-Gray;
+        border-radius: 3px;
+    }
+
+    &__temperature {
+        @extend .text-style-page-header-tab;
+    }
+
+    &__summary {
+        display: flex;
+        align-items: center;
+    }
+
+    &__description {
+        @extend .text-style-page-header-tab;
+        text-transform: capitalize;
+    }
+
+    &__icon {
+        height: 60px;
+        width: 60px;
+    }
+
+    &__right {
+        display: flex;
+        flex-direction: column;
+        padding-left: 1.5rem;
+    }
+
+    &__row {
+        padding-bottom: 0.25rem;
+    }
+
+    &__label, &__value {
+        @extend .text-style-body-copy-tab;
+        color: $WC-Gray;
+        font-weight: 600;
+    }
+
+    &__label {
+        padding-right: 4px;
+    }
+    
+
+
+}

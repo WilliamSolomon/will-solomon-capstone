@@ -1,0 +1,50 @@
+@use '../../styles/partials/global';
+@import '../../styles/partials/variables';
+@import '../../styles/partials/mixins';
+
+
+.carousel {
+    display: flex;
+    width: 400px;
+    height: 250px;
+    overflow-x: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+
+
+
+    &__container {
+        display: flex;
+        position: relative;
+    }
+
+    &__arrow-left,
+    &__arrow-right {
+        height: 30px;
+        width: 30px;
+        position: absolute;
+        z-index: 2;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 24px;
+        cursor: pointer;
+        background: none;
+        border: none;
+        color: $WC-White;
+        outline: none;
+    }
+
+    &__arrow-left {
+        left: -1rem;
+    }
+
+    &__arrow-right {
+        right: 1rem;
+    }
+
+}
+
+::-webkit-scrollbar {
+    height: 0;
+    width: 0;
+}

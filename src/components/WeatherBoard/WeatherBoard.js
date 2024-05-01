@@ -10,7 +10,7 @@ const weekDays = [
     "Sun"
 ];
 
-const WeatherBoard = ({ weatherData, forecastData }) => {
+const WeatherBoard = ({ forecastData }) => {
 
     const dayOfWeek = new Date().getDay();
     const forecastDays = weekDays.slice(dayOfWeek, weekDays.length).concat(

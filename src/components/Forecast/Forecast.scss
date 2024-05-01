@@ -1,0 +1,21 @@
+@use '../../styles/partials/global';
+@import '../../styles/partials/variables';
+@import '../../styles/partials/mixins';
+
+.forecast {
+    background-color: $WC-Platinum;
+    width: 500px;
+    padding: 3rem;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+
+    &__title {
+        padding: 2rem 0;
+        @extend .text-style-page-header-desk
+    }
+
+    &__sub-title {
+        padding: 2rem 0;
+    }
+
+}
