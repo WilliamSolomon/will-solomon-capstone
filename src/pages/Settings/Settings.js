@@ -155,6 +155,9 @@ const Settings = () => {
         setUserCoord({ lat, lon });
     }
 
+    console.log(userCity);
+    console.log(userCoord);
+
     return (
         <>
             <main>

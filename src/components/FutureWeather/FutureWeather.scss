@@ -1,0 +1,7 @@
+@use '../../styles/partials/global';
+@import '../../styles/partials/variables';
+@import '../../styles/partials/mixins';
+
+.weather-card {
+    scroll-snap-align: start;
+}

@@ -13,4 +13,8 @@
         background: linear-gradient(45deg, hsla(0, 0%, 89%), hsla(0, 0%, 48%));
         height: 100vh;
     }
+
+    &__content {
+        display: flex;
+    }
 }
