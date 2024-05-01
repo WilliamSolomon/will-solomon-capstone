@@ -11,7 +11,7 @@ body {
     width: 100vw;
     background-color: $Light-Grey;
 
-//     @include font-styling(400, $Instock-Black);
+    //     @include font-styling(400, $Instock-Black);
 
     a {
         text-decoration: none;
@@ -132,6 +132,9 @@ body {
         }
     }
 
+
+    // Labes & Button Styles
+
     label {
         @include font-styling(600, $Slate);
 
@@ -248,4 +251,78 @@ body {
             padding-left: 1.5rem;
         }
     }
+}
+
+// Text styles - @mixin format-text($lh, $fs: 1rem, $fw) 
+
+/* Mobile text styles */
+
+.text-style-page-header-mbl {
+    @include format-text(2rem, 1.5rem, 700)
+}
+
+.text-style-page-header-mbl {
+    @include format-text(2rem, 1.5rem, 700)
+}
+
+
+.text-style-section-header-mbl {
+    @include format-text(1.25rem, 0.75rem, 700)
+}
+
+.text-style-subheader-mbl {
+    @include format-text(1.125rem, 0.8125rem, 700)
+}
+
+.text-style-body-copy-mbl {
+    @include format-text(1.125rem, 0.8125rem, 400)
+}
+
+.text-style-page-labels-buttons-mbl {
+    @include format-text(1.25rem, 0.8125rem, 600)
+}
+
+
+/* Tablet text styles */
+
+.text-style-page-header-tab {
+    @include format-text(2.75rem, 2.0625rem, 700)
+}
+
+.text-style-section-header-tab {
+    @include format-text(1.25rem, 0.75rem, 700)
+}
+
+.text-style-subheader-tab {
+    @include format-text(1.375rem, 0.875rem, 700)
+}
+
+.text-style-body-copy-tab {
+    @include format-text(1.375rem, 0.875rem, 400)
+}
+
+.text-style-page-labels-buttons-tab {
+    @include format-text(1.25rem, 0.75rem, 400)
+}
+
+/* Desktop text styles */
+
+.text-style-page-header-desk {
+    @include format-text(4.25rem, 3.75rem, 600)
+}
+
+.text-style-section-header-desk {
+    @extend .text-style-section-header-tab
+}
+
+.text-style-subheader-desk {
+    @extend .text-style-subheader-tab
+}
+
+.text-style-body-copy-desk {
+    @extend .text-style-body-copy-tab
+}
+
+.text-style-page-labels-buttons-desk {
+    @extend .text-style-page-labels-buttons-tab
 }

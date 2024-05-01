@@ -1,0 +1,93 @@
+@use '../../styles/partials/global';
+@import '../../styles/partials/variables';
+@import '../../styles/partials/mixins';
+
+
+.hero {
+
+    &__background {
+        height: 800px;
+        width: 800px;
+        padding: 3rem;
+        position: relative;
+        background: linear-gradient(45deg, hsla(0, 0%, 20%, 0.6), hsla(0, 0%, 20%, 0.6)),
+            /* Start with 50% transparent #323232 */
+            url("http://localhost:8080/images/image5.jpg");
+        background-position: center;
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    &__logo {
+        position: absolute;
+        left: 3rem;
+        top: 3rem;
+        color: $WC-White;
+    }
+
+    &__location {
+        position: absolute;
+        right: 3rem;
+        top: 3rem;
+        display: flex;
+        align-items: center;
+        padding: 0.5rem 1rem;
+        background-color: $WC-Gray;
+        border-radius: 17px;
+    }
+
+    &__location-details {
+        padding-left: 0.75rem;
+    }
+
+    &__location-current {
+        @extend .text-style-subheader-tab;
+        color: $WC-White;
+        margin: 0;
+    }
+
+    &__location-title {
+        @extend .text-style-page-labels-buttons-tab;
+        color: $WC-White;
+        margin: 0;
+    }
+
+
+    &__location-icon {
+        height: 30px;
+        width: 30px;
+    }
+
+    &__search-icon {
+        padding-left: 1rem;
+        height: 40px;
+        width: 40px;
+    }
+
+    &__search {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__greeting {
+        color: $WC-White;
+        padding-bottom: 1.5rem;
+    }
+
+    &__divider-bar {
+        border: 2px solid $WC-White;
+        width: 150px;
+        margin-bottom: 1.5rem;
+        border-radius: 2px;
+    }
+
+    &__search-bar {
+        display: flex;
+        align-items: center;
+    }
+
+}

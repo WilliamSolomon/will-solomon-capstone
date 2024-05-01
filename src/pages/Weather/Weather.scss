@@ -1,0 +1,16 @@
+@use '../../styles/partials/global';
+@import '../../styles/partials/variables';
+@import '../../styles/partials/mixins';
+
+
+.weather {
+    &__container {
+        display: flex;
+        // padding: 50px 120px;
+        justify-content: center;
+        align-items: center;
+        // height: 300px;
+        background: linear-gradient(45deg, hsla(0, 0%, 89%), hsla(0, 0%, 48%));
+        height: 100vh;
+    }
+}

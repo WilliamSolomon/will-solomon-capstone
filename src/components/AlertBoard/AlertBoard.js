@@ -42,23 +42,6 @@ const AlertBoard = () => {
         setTriggerRefresh(!triggerRefresh)
     }
 
-    // const formatCreatedAt = (timestamp) => {
-    //     const date = new Date(timestamp);
-    //     const options = { weekday: 'long', month: 'long', day: 'numeric' };
-    //     return date.toLocaleDateString('en-US', options);
-    // };
-
-
-    // const formatCreatedAt = (timestamp) => {
-    //     const date = new Date(timestamp);
-    //     const options = { timeZone: 'UTC', weekday: 'long', month: 'long', day: 'numeric' };
-    //     return date.toLocaleDateString('en-US', options);
-    // };
-
-    // if (loading) {
-    //     return <div>Loading...</div>;
-    // }
-
     const formatCreatedAt = (timestamp) => {
         const date = new Date(timestamp * 1000);
         const options = { weekday: 'long', month: 'long', day: 'numeric' };
