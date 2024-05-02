@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
+import { FaCircleChevronLeft, FaCircleChevronRight } from "react-icons/fa6";
 import FutureWeather from "../FutureWeather/FutureWeather";
 import "./Carousel.scss";
 
@@ -18,7 +18,7 @@ const Carousel = ({ weatherData }) => {
 
     return (
         <div className="carousel__container">
-            <BsArrowLeftCircleFill
+            <FaCircleChevronLeft
                 className="carousel__arrow-left"
                 onClick={goToPrevSlide}
             />
@@ -27,7 +27,7 @@ const Carousel = ({ weatherData }) => {
                     return <FutureWeather key={index} index={(currentIndex + index) % 7} weatherData={item} />;
                 })}
             </div>
-            <BsArrowRightCircleFill
+            <FaCircleChevronRight
                 className="carousel__arrow-right"
                 onClick={goToNextSlide}
             />
