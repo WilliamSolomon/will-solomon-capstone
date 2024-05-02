@@ -1,6 +1,7 @@
 import SearchBar from "../SearchBar/SearchBar";
 import "./Hero.scss"
 import logo from "../../assets/logos/logo3-cropped.svg"
+import SearchField from "../SearchField/SearchField";
 
 const locationIconURL = "http://localhost:8080/images/icons/location.svg"
 const searchIconURL = "http://localhost:8080/images/icons/location_target.svg"
@@ -24,10 +25,10 @@ const Hero = () => {
 
                 <div className="hero__bottom">
                     <div className="hero__search">
-                        <h2 className="hero__greeting">Get outside and take photos</h2>
+                        <h2 className="hero__greeting">Weather insight for every moment</h2>
                         <div className="hero__divider-bar"></div>
                         <div className="hero__search-bar">
-                            <SearchBar></SearchBar>
+                            <SearchField />
                             <img className="hero__search-icon" src={searchIconURL} alt="search icon" />
                         </div>
                     </div>
