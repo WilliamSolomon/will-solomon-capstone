@@ -3,7 +3,7 @@ import "./SearchBar.scss";
 import { AsyncPaginate } from 'react-select-async-paginate'
 import { geoAPIURL, GeoAPIOptions } from "../GeoAPI/GeoAPIOptions";
 
-const SearchBar = ({ onSearchChange }) => {
+const SearchBar = ({ onConfirm }) => {
 
     const [search, setSearch] = useState(null);
 
@@ -26,8 +26,9 @@ const SearchBar = ({ onSearchChange }) => {
     }
 
     const handleOnChange = (searchData) => {
-        setSearch(searchData);
-        onSearchChange(searchData);
+        // setSearch(searchData);
+        onConfirm(searchData);
+        // onSearchChange(searchData);
     }
 
     return (
