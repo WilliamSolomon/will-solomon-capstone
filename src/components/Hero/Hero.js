@@ -6,7 +6,8 @@ import SearchField from "../SearchField/SearchField";
 const locationIconURL = "http://localhost:8080/images/icons/location.svg"
 const searchIconURL = "http://localhost:8080/images/icons/location_target.svg"
 
-const Hero = () => {
+const Hero = ({setAddressInfo, userLocation}) => {
+  
     return (
         <section className="hero">
             <div className="hero__background">
@@ -18,7 +19,7 @@ const Hero = () => {
                         <img className="hero__location-icon" src={locationIconURL} alt="location icon" />
                         <div className="hero__location-details">
                             <p className="hero__location-title">Current Location</p>
-                            <p className="hero__location-current">Brooklyn, NY</p>
+                            <p className="hero__location-current">{userLocation}</p>
                         </div>
                     </div>
                 </div>
@@ -28,7 +29,7 @@ const Hero = () => {
                         <h2 className="hero__greeting">Weather insight for every moment</h2>
                         <div className="hero__divider-bar"></div>
                         <div className="hero__search-bar">
-                            <SearchField />
+                            <SearchField setAddressInfo={setAddressInfo} />
                             <img className="hero__search-icon" src={searchIconURL} alt="search icon" />
                         </div>
                     </div>
