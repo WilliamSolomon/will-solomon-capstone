@@ -1,6 +1,4 @@
-import SearchBar from "../SearchBar/SearchBar";
 import "./Hero.scss"
-import logo from "../../assets/logos/logo3-cropped.svg"
 import SearchField from "../SearchField/SearchField";
 
 const locationIconURL = "http://localhost:8080/images/icons/location.svg"

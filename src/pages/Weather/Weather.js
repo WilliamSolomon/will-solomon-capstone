@@ -15,9 +15,6 @@ const Weather = () => {
         const storedLng = localStorage.getItem('user_lng');
 
         if (storedLng) {
-            console.log("Stored Address is present", storedAddress);
-            console.log("Stored Latitude is present", storedLat);
-            console.log("Stored Longitude is present", storedLng);
             setAddressInfo({
                 address: storedAddress,
                 lat: storedLat,
@@ -31,11 +28,12 @@ const Weather = () => {
         }
     }, []); // This useEffect runs only once on component mount
 
-    useEffect(() => {
-        console.log("Parent triggered", addressInfo);
-    }, [addressInfo])
+    // useEffect(() => {
+    //     console.log("Parent triggered", addressInfo);
+    // }, [addressInfo])
 
     // useEffect to watch for changes in addressInfo and update local storage
+    
     useEffect(() => {
         console.log("Storage update triggered", addressInfo);
         if (addressInfo.address && addressInfo.lat && addressInfo.lon) {
@@ -50,8 +48,8 @@ const Weather = () => {
     return (
         <main className='weather__container'>
             <div className='weather__content'>
-                <Hero setAddressInfo={setAddressInfo} userLocation={addressInfo ? addressInfo.address : null} />
-                {addressInfo && <Forecast userLocation={addressInfo} />}
+                <Hero setAddressInfo={setAddressInfo} userLocation={addressInfo.address} />
+                {addressInfo.lon && <Forecast userLocation={addressInfo} />}
             </div>
         </main>
     )
