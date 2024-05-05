@@ -50,7 +50,7 @@ const AlertBoard = () => {
     
     return (
         <div className="alerts">
-            <h1 className="alerts__title">Weather Alerts</h1>
+            <h2 className="alerts__title">Weather Alerts</h2>
             <ul className="alerts__cards-container">
                 {alerts.map(alert => (
                     <div className="alerts__card" key={alert.id}>

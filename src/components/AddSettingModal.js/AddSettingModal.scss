@@ -7,17 +7,19 @@
     padding: 1rem;
     padding-bottom: 0.25rem;
     margin-top: -5rem;
-    z-index: 1;
+    z-index: 3;
 
     @include tablet {
         padding: 0 2rem 0.25rem 2rem;
         margin-top: -7rem;
         height: 87vh;
+        z-index: 3;
     }
 
     @include desktop {
         padding: 0 10vw 0.25rem 10vw;
         margin-top: -7rem;
+        z-index: 3;
     }
 
     &__container {
@@ -76,7 +78,7 @@
     &-form {
         width: 100%;
     }
-    
+
 }
 
 .no-scroll {
@@ -94,7 +96,7 @@
         left: 0;
         display: flex;
         justify-content: center;
-        
+
         z-index: 2;
 
         @include tablet {
@@ -104,22 +106,27 @@
 
     &__content {
         height: 100%;
-        position: relative;
+        position: fixed;
         background-color: $White;
         padding: 1rem 1rem 0 1rem;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        z-index: 3;
 
         @include tablet {
+            position: fixed;
             width: 85vw;
             height: 30vh;
-            top: 21%
+            top: 21%;
+            z-index: 3;
         }
 
         @include desktop {
+            position: fixed;
             width: 55vw;
             height: 320px;
+            z-index: 3;
         }
     }
 
@@ -135,7 +142,7 @@
 
     &__text-container {
         width: 100%;
-        
+
         @include tablet {
             padding: 0 0 0 2rem;
             width: 80%;

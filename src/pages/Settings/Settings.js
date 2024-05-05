@@ -161,13 +161,12 @@ const Settings = () => {
     return (
         <>
             <main>
-                <Header />
                 <section className="settings">
                     <div className="settings__container">
                         <section className="settings__header">
                             <h2 className="settings__title">Settings</h2>
                             <div className="settings__right">
-                                <div className='settings__location-container'>
+                                {/* <div className='settings__location-container'>
                                     <h3 className='dashboard__title'>
                                         CURRENT LOCATION: {userCity}
                                     </h3>
@@ -189,7 +188,7 @@ const Settings = () => {
                                             alt="update location icon"
                                             onClick={openModal} />
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="settings-item__actions">
                                     <AddSettingModal
                                         isSettingsOpen={isSettingsModalOpen}

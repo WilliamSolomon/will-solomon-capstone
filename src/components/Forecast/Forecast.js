@@ -8,7 +8,8 @@ import axios from "axios";
 import TodayWeather from "../TodayWeather/TodayWeather";
 import Carousel from "../Carousel/Carousel";
 import AlertBoard from "../AlertBoard/AlertBoard";
-import SettingsList from "../SettingsList/SettingsList"
+import Settings from "../../pages/Settings/Settings";
+// import SettingsList from "../SettingsList/SettingsList"
 
 const Forecast = ({ userLocation }) => {
     const [currentWeather, setCurrentWeather] = useState(null);
@@ -53,11 +54,11 @@ const Forecast = ({ userLocation }) => {
                 <h2 className="forecast__sub-title">Daily</h2>
                 <Carousel weatherData={forecastWeather} />
             </div> */}
-            <div className="alert__container">
+            {/* <div className="alert__container">
                 <AlertBoard />
-            </div>
+            </div> */}
             <div className="settings_container">
-                {/* <SettingsList /> */}
+                <Settings />
             </div>
         </section>
     );

@@ -9,7 +9,8 @@
 
 body {
     width: 100vw;
-    background-color: $Light-Grey;
+    // background-color: $Light-Grey;
+    background: linear-gradient(45deg, hsla(0, 0%, 89%), hsla(0, 0%, 48%));
 
     //     @include font-styling(400, $Instock-Black);
 
@@ -96,41 +97,41 @@ body {
         }
     }
 
-    p1 {
-        @include format-text(1.625rem, 0.9375rem, 400);
+    // p1 {
+    //     @include format-text(1.625rem, 0.9375rem, 400);
 
-        @include tablet {
-            @include format-text(1.75rem, 1rem, 400);
-        }
+    //     @include tablet {
+    //         @include format-text(1.75rem, 1rem, 400);
+    //     }
 
-        @include desktop {
-            @include format-text(1.75rem, 1rem, 400);
-        }
-    }
+    //     @include desktop {
+    //         @include format-text(1.75rem, 1rem, 400);
+    //     }
+    // }
 
-    p2 {
-        @include format-text(1.25rem, 0.8125rem, 400);
+    // p2 {
+    //     @include format-text(1.25rem, 0.8125rem, 400);
 
-        @include tablet {
-            @include format-text(1.375rem, 0.875rem, 400);
-        }
+    //     @include tablet {
+    //         @include format-text(1.375rem, 0.875rem, 400);
+    //     }
 
-        @include desktop {
-            @include format-text(1.375rem, 0.875rem, 400);
-        }
-    }
+    //     @include desktop {
+    //         @include format-text(1.375rem, 0.875rem, 400);
+    //     }
+    // }
 
-    p3 {
-        @include format-text(1rem, 0.6875rem, 400);
+    // p3 {
+    //     @include format-text(1rem, 0.6875rem, 400);
 
-        @include tablet {
-            @include format-text(1.125rem, 0.75rem, 400);
-        }
+    //     @include tablet {
+    //         @include format-text(1.125rem, 0.75rem, 400);
+    //     }
 
-        @include desktop {
-            @include format-text(1.125rem, 0.75rem, 400);
-        }
-    }
+    //     @include desktop {
+    //         @include format-text(1.125rem, 0.75rem, 400);
+    //     }
+    // }
 
 
     // Labes & Button Styles
