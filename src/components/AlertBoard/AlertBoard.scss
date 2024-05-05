@@ -1,11 +1,32 @@
-.alerts {
+@use '../../styles/partials/global';
+@import '../../styles/partials/variables';
+@import '../../styles/partials/mixins';
 
-    &__container {
-        padding: 32px 0 32px 0
+.alerts {
+    // width: 34.25rem;
+    padding: 0 0 0 3rem;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    position: relative; /* Make sure the element is positioned relative to its normal position */
+    left: -3rem; /* Move the element 3rem to the left */
+    z-index: 0; /* Push the element behind all other elements */
+    display: flex;
+    flex-direction: column;
+    // background-color: $WC-White;
+
+    &__title {
+        padding: 2rem 0;
+        @extend .text-style-page-header-desk
+    }
+
+    &__sub-title {
+        padding: 2rem 0;
     }
 
     &__cards-container {
         padding-top: 16px;
+        overflow-x: hidden;
+        max-height: 500px;
     }
 
     &__card-condition {
