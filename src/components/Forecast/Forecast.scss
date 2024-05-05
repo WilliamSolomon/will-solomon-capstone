@@ -4,10 +4,13 @@
 
 .forecast {
     background-color: $WC-White;
-    width: 500px;
-    padding: 3rem;
+    width: 34.25rem;
+    padding: 3rem 3rem 3rem 6rem;
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
+    position: relative; /* Make sure the element is positioned relative to its normal position */
+    left: -3rem; /* Move the element 3rem to the left */
+    z-index: 0; /* Push the element behind all other elements */
 
     &__title {
         padding: 2rem 0;
