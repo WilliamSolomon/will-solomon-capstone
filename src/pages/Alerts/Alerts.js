@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
-import Forecast from '../../components/Forecast/Forecast';
-import Hero from '../../components/Hero/Hero';
-import "./Weather.scss"
+import NavBar from '../../components/NavBar/NavBar';
 import AlertBoard from '../../components/AlertBoard/AlertBoard';
+import "./Alerts.scss"
 
-const Weather = () => {
+const Alerts = () => {
     const [addressInfo, setAddressInfo] = useState([])
 
     // useEffect to check localStorage and set addressInfo
@@ -36,16 +35,14 @@ const Weather = () => {
         }
     }, [addressInfo]);
 
-
-
     return (
         <main className='weather__container'>
             <div className='weather__content'>
-                <Hero setAddressInfo={setAddressInfo} userLocation={addressInfo.address} />
-                {addressInfo.lon && <Forecast userLocation={addressInfo} />}
+                <NavBar />
+                <AlertBoard/>
             </div>
         </main>
     )
 }
 
-export default Weather;
+export default Alerts;
