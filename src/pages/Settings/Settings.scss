@@ -3,10 +3,9 @@
 @import '../../styles/partials/mixins';
 
 .settings {
-    padding: 24px 240px 24px 240px;
 
     &__title{
-        padding-bottom: 8px;
+        padding: 2rem 0 8px 0;
     }
     &__location-container{
         display: flex;
@@ -21,6 +20,7 @@
         font-weight: 600;
         font-size: 20px;
     }
+
     // padding: 1rem;
     // padding-bottom: 0.25rem;
     // margin-top: -5rem;

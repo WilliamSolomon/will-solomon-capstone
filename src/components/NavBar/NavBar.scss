@@ -3,10 +3,11 @@
 @import '../../styles/partials/mixins';
 
 .navbar {
+    // padding-right: 2rem
 
     &__list {
         list-style: none;
-        padding: 0;
+        padding: 0 2rem 0 0;
         margin: 0;
         display: flex;
         justify-content: flex-end;

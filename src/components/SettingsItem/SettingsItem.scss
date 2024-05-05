@@ -5,7 +5,7 @@
 .settings-item {
     display: flex;
     flex-direction: column;
-    padding: 1rem;
+    padding: 1rem 1rem 1rem 0;
     width: 100%;
 
     &:not(:last-child) {
@@ -18,12 +18,12 @@
 
     @include tablet {
         flex-direction: row;
-        padding: 1rem 2rem;
+        padding: 1rem 2rem 1rem 0;
     }
 
     @include desktop {
         flex-direction: row;
-        padding: 1rem 2rem;
+        padding: 1rem 2rem 1rem 0;
     }
 
     &__container {
@@ -138,13 +138,11 @@
 
         @include tablet {
             width: 9.09vw;
-            justify-content: end;
             gap: 1rem;
         }
 
         @include desktop {
             width: 9.09vw;
-            justify-content: end;
             gap: 1rem;
         }
 
