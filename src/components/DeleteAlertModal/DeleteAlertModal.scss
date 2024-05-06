@@ -3,22 +3,46 @@
 @import '../../styles/partials/mixins';
 
 
-.no-scroll{
+.no-scroll {
     overflow: hidden;
     height: 100%;
     width: 100%;
 }
 
-.modal{
+.delete-alert-modal {
+    &__content {
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: $White;
+        padding: 1rem 1rem 0 3rem;
+        display: flex;
+        flex-direction: column;
+        // justify-content: space-between;
+
+        @include tablet {
+            width: 85vw;
+            height: 30vh;
+            // top: 21%
+        }
+
+        @include desktop {
+            width: 450px;
+            height: 600px;
+        }
+    }
+}
+
+.modal {
     &__overlay {
         width: 100%;
         height: 100%;
-        position: fixed;
+        // position: fixed;
         top: 0;
         left: 0;
         display: flex;
         justify-content: center;
-        
         z-index: 2;
 
         @include tablet {
@@ -26,30 +50,9 @@
         }
     }
 
-    &__content {
-        height: 100%;
-        position: relative;
-        background-color: $White;
-        padding: 1rem 1rem 0 1rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-
-        @include tablet {
-            width: 85vw;
-            height: 30vh;
-            top: 21%
-        }
-
-        @include desktop {
-            width: 55vw;
-            height: 31vh;
-        }
-    }
-
     &__close-container {
         display: flex;
-        justify-content: flex-end;
+        // justify-content: flex-end;
         margin-bottom: 1.5rem;
 
         @include tablet {
@@ -59,9 +62,9 @@
 
     &__text-container {
         width: 100%;
-        
+
         @include tablet {
-            padding: 0 0 0 2rem;
+            padding: 0 0 0.5rem 0;
             width: 80%;
         }
     }
@@ -72,7 +75,7 @@
         gap: 1rem;
 
         @include tablet {
-            justify-content: flex-end;
+            // justify-content: flex-end;
             padding: 0 2rem 2.5rem 0;
         }
 
@@ -86,7 +89,6 @@
     &__cancel,
     &__delete {
         height: 2.25rem;
-
     }
 
     &__cancel {
@@ -99,7 +101,7 @@
         }
 
         @include desktop {
-            width: 12%;
+            width: 5rem;
         }
 
         &:hover {
@@ -117,7 +119,7 @@
         }
 
         @include desktop {
-            width: 12%;
+            width: 5rem;
         }
     }
 }

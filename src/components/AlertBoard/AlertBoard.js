@@ -61,14 +61,15 @@ const AlertBoard = () => {
                         </div>
                     </div>
                 ))}
-            </ul>
-            {/* Render the DeleteAlertModal component with isOpen controlled by isModalOpen state */}
-            <DeleteAlertModal
+                {/* Render the DeleteAlertModal component with isOpen controlled by isModalOpen state */}
+                     <DeleteAlertModal
                 isOpen={isModalOpen}
                 onClose={() => setModalOpen(false)}
                 alertId={selectedAlert}
                 updateTrigger={updateTrigger}
             />
+            </ul>
+    
         </div>
     );
 };

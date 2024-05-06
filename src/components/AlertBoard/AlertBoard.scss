@@ -24,6 +24,7 @@
     }
 
     &__cards-container {
+        position: relative;
         padding-top: 16px;
         overflow-x: hidden;
         max-height: 600px;

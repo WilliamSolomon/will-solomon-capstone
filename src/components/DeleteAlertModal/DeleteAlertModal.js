@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import "./DeleteAlertModal.scss"
 
 import xicon from '../../assets/icons/close-24px.svg'
 import deleteIcon from '../../assets/icons/delete_outline-24px.svg';
@@ -23,11 +24,11 @@ const DeleteAlertModal = ({ isOpen, onClose, alertId, updateTrigger }) => {
     return (
         <section className='modal'>
             <div className="modal__overlay">
-                <div className="modal__content">
+                <div className="delete-alert-modal__content">
                     <section className='modal__container'>
-                        <section className='modal__close-container'>
+                        {/* <section className='modal__close-container'>
                             <img className="modal__close" onClick={onClose} src={xicon} />
-                        </section>
+                        </section> */}
                         <section className='modal__text-container'>
                             <p>Delete alert?</p>
                         </section>
