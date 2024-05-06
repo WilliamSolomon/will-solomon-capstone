@@ -66,29 +66,20 @@ export default function SettingsItem({ item, updateTrigger }) {
         <>
             <section className="settings-item" key={item.id}>
                 <div className='settings-item__container'>
-                    <div className='settings-item__left--even'>
-                        <div className="settings-item__group">
-                            <h4 className="settings-item__label">Settings ITEM</h4>
-                        </div>
-                        <div className="settings-item__group">
-                            <h4 className="settings-item__label">CATEGORY</h4>
-                            <p2 className="settings-item__category">{item.category}</p2>
-                        </div>
+                    <div className="settings-item__group">
+                        <h4 className="settings-item__label">CATEGORY</h4>
+                        <p2 className="settings-item__category">{item.category}</p2>
                     </div>
-                    <div className='settings-item__right'>
-                        <div className="settings-item__group">
-                            <h4 className="settings-item__label">STATUS</h4>
-                            <p3 className='settings-item__status'>{item.status}</p3>
-                        </div>
+                    <div className="settings-item__group">
+                        <h4 className="settings-item__label">STATUS</h4>
+                        <p3 className='settings-item__status'>{item.status}</p3>
                     </div>
-                    <div className='settings-item__right'>
-                        <div className="settings-item__group">
-                            <h4 className="settings-item__label">CONDITION</h4>
-                            <p3 className='settings-item__status'>{item.condition}</p3>
-                        </div>
+                    <div className="settings-item__group">
+                        <h4 className="settings-item__label">CONDITION</h4>
+                        <p3 className='settings-item__status'>{item.condition}</p3>
                     </div>
                 </div >
-                <div className='settings-item__actions--even'>
+                <div className='settings-item__actions-group'>
                     <DeleteSettingsModal
                         isOpen={isModalOpen}
                         onClose={closeModal}
@@ -103,7 +94,7 @@ export default function SettingsItem({ item, updateTrigger }) {
                         updateTrigger={updateTrigger}
                         id={item.id}
                     />
-                    <img className="settings-item__edit" src={editIcon} alt="edit settings item" onClick={openEditModal}/>
+                    <img className="settings-item__edit" src={editIcon} alt="edit settings item" onClick={openEditModal} />
                 </div>
             </section >
         </>

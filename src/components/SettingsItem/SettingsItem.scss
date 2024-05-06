@@ -28,6 +28,7 @@
 
     &__container {
         display: flex;
+        justify-content: space-evenly;
         width: 100%;
 
         @include tablet {
@@ -146,13 +147,14 @@
             gap: 1rem;
         }
 
-        &--even {
+        &-group {
+            display: flex;
             @include tablet {
-                width: 12.5%;
+              
             }
     
             @include desktop {
-                width: 12.5%;
+               
             }
         }
     }
