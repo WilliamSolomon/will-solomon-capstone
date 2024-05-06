@@ -12,7 +12,7 @@ function SearchModal({ isOpen, onClose, onConfirm, onSearchChange }) {
     return (
         <section className='modal'>
             <div className="modal__overlay">
-                <div className="modal__content">
+                <div className="delete-modal__content">
                     <section className='modal__container'>
                         <section className='modal__close-container'>
                             <img className="modal__close" onClick={onClose} src={xicon} />

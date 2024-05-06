@@ -12,6 +12,10 @@
         padding-bottom: 16px;
     }
 
+    &__list {
+        position: relative;
+    }
+
     &-item__category{
         font-weight: 600;
         font-size: 20px;
@@ -19,6 +23,11 @@
     &-item__status {
         font-weight: 600;
         font-size: 20px;
+    }
+
+    &-item__actions {
+        position: relative;
+        background-color: green;
     }
 
     // padding: 1rem;

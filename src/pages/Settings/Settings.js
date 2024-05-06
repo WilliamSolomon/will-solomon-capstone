@@ -102,7 +102,7 @@ const Settings = () => {
         if (!token) {
             return; // Exit early if token is null
         }
-        
+
         const decodedToken = jwtDecode(token);
         const userId = decodedToken.id;
 
@@ -165,7 +165,10 @@ const Settings = () => {
                     <div className="settings__container">
                         <section className="settings__header">
                             <h2 className="settings__title">Settings</h2>
-                            <div className="settings__right">
+
+                        </section>
+                        <section className="settings__list">
+                            <div className="settings__actions">
                                 <div className="settings-item__actions">
                                     <AddSettingModal
                                         isSettingsOpen={isSettingsModalOpen}
@@ -178,8 +181,6 @@ const Settings = () => {
                                         Add Alert</button>
                                 </div>
                             </div>
-                        </section>
-                        <section className="settings__list">
                             {!settingsList ? (
                                 <h2>Loading...</h2>
                             ) : (

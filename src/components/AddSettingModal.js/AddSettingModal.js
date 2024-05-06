@@ -12,11 +12,11 @@ export default function AddSettingModal({ isSettingsOpen, onClose, onConfirm }) 
                     <div className="add-setting__modal__overlay">
                         <div className="add-setting__modal__content">
                             <section className='add-setting__modal__container'>
-                                <section className='add-setting__modal__close-container'>
+                                {/* <section className='add-setting__modal__close-container'>
                                     <img className="add-setting__modal__close" onClick={onClose} src={xicon} />
-                                </section>
+                                </section> */}
                                 <section className="add-setting__form">
-                                    <h1 className='add-setting__title'>Add New Alert Setting</h1>
+                                    <h2 className='add-setting__title'>Add New Alert Setting</h2>
                                     <AddSettingForm type="add" onClose={onClose} onConfirm={onConfirm} />
                                 </section>
                             </section>
