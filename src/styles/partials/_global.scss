@@ -252,6 +252,10 @@ body {
             padding-left: 1.5rem;
         }
     }
+
+    .hidden {
+        display: none;
+    }
 }
 
 // Text styles - @mixin format-text($lh, $fs: 1rem, $fw) 

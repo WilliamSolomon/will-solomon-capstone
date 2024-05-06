@@ -131,7 +131,7 @@ const Settings = () => {
     if (user === null) {
         return (
             <main className="dashboard">
-                <p>Loading...</p>
+                <p>User Null Loading...</p>
             </main>
         );
     }
@@ -166,29 +166,6 @@ const Settings = () => {
                         <section className="settings__header">
                             <h2 className="settings__title">Settings</h2>
                             <div className="settings__right">
-                                {/* <div className='settings__location-container'>
-                                    <h3 className='dashboard__title'>
-                                        CURRENT LOCATION: {userCity}
-                                    </h3>
-                                    <div className="dashboard__actions">
-                                        <SearchModal
-                                            isOpen={isModalOpen}
-                                            onClose={closeModal}
-                                            onConfirm={() => {
-                                                sessionStorage.setItem('user_city', userCity);
-                                                sessionStorage.setItem('user_lat', userCoord.lat);
-                                                sessionStorage.setItem('user_lon', userCoord.lon);
-                                                closeModal();
-                                            }}
-                                            onSearchChange={handleSearchChange} // Pass handleSearchChange as a prop
-                                        />
-                                        <img
-                                            className="dashboard__location-update"
-                                            src={searchIcon}
-                                            alt="update location icon"
-                                            onClick={openModal} />
-                                    </div>
-                                </div> */}
                                 <div className="settings-item__actions">
                                     <AddSettingModal
                                         isSettingsOpen={isSettingsModalOpen}
