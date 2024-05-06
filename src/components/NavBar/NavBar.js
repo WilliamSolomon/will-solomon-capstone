@@ -1,29 +1,35 @@
-import "./NavBar.scss"
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import "./NavBar.scss";
+import React, { useState } from 'react';
 
-const NavBar = () => {
+const NavBar = ({ handleNavigation }) => {
+    const [activeNavItem, setActiveNavItem] = useState("Weather");
+
+    const handleClick = (navItem) => {
+        setActiveNavItem(navItem);
+        handleNavigation(navItem);
+    };
+
     return (
         <nav className="navbar">
             <ul className="navbar__list">
                 <li className="navbar__item">
-                    <NavLink to="/weather" className="navbar__link" activeClassName="navbar__link--active">
+                    <div className={`navbar__link ${activeNavItem === 'Weather' ? 'navbar__link--active' : ''}`} onClick={() => handleClick('Weather')}>
                         Weather
-                    </NavLink>
+                    </div>
                 </li>
                 <li className="navbar__item">
-                    <NavLink to="/alerts" className="navbar__link" activeClassName="navbar__link--active">
+                    <div className={`navbar__link ${activeNavItem === 'Alerts' ? 'navbar__link--active' : ''}`} onClick={() => handleClick('Alerts')}>
                         Alerts
-                    </NavLink>
+                    </div>
                 </li>
                 <li className="navbar__item">
-                    <NavLink to="/settings" className="navbar__link" activeClassName="navbar__link--active">
+                    <div className={`navbar__link ${activeNavItem === 'Settings' ? 'navbar__link--active' : ''}`} onClick={() => handleClick('Settings')}>
                         Settings
-                    </NavLink>
+                    </div>
                 </li>
             </ul>
         </nav>
-    )
-}
+    );
+};
 
 export default NavBar;

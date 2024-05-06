@@ -26,7 +26,9 @@
     &__cards-container {
         padding-top: 16px;
         overflow-x: hidden;
-        max-height: 500px;
+        max-height: 600px;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
     }
 
     &__card-condition {

@@ -3,11 +3,11 @@
 @import '../../styles/partials/mixins';
 
 .navbar {
-    // padding-right: 2rem
+    height: 2rem;
 
     &__list {
         list-style: none;
-        padding: 0 2rem 0 0;
+        padding: 0 2rem 0rem 0;
         margin: 0;
         display: flex;
         justify-content: flex-end;
@@ -16,18 +16,20 @@
     &__item {
         margin-right: 20px;
         @extend .text-style-subheader-tab;
+        cursor: pointer;
     }
 
     &__link {
-        padding-bottom: 1rem;
         color: $WC-Gray;
 
         &:hover {
             color: $WC-DarkCyan; // Change color on hover if desired
+            border-bottom: solid 2px $WC-DarkCyan;
         }
 
         &--active {
-            border-bottom: 5px solid #fff;
+            color: $WC-DarkCyan;
+            border-bottom: solid 2px $WC-DarkCyan;
         }
     }
 }
