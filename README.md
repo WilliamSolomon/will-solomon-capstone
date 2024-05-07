@@ -82,51 +82,48 @@ Settings: Stored information for alerts sent
 Register: Stored information for registered employees for facial recognition
 Users:
 
-![](./src/assets/images/ProposalSQLdata.png)
+![](./src/assets/images/SQLdata.png)
 
 ### Endpoints
 
-- Handle CRUD operations for user accounts, weather alerts, and weather alert settings.
+- **POST /api/users/register**
 
-**POST /api/users/register**
-
-- Register a new user.
+Register a new user.
 
 Parameters:
-
 - username (string): User's username
 - email (string): User's email address
 - password (string): User's password
 
 Response:
-
+```json
 {
-  "message": "User successfully registered"
+"message": "User successfully registered"
 }
 
+- **POST /api/users/login**
 
-**POST /api/users/login**
-
-- Log in an existing user.
+Log in an existing user.
 
 Parameters:
 
+    email (string): User's email address
+    password (string): User's password
+
+Response:
+{
+  "token": "JWT_TOKEN"
+}
+
+- **POST /api/users/login**
+
+Log in an existing user.
+
+Parameters:
 - email (string): User's email address
 - password (string): User's password
 
 Response:
-
-{
-    "token": "JWT_TOKEN"
-}
-
-
-**GET /api/weather/forecast**
-
-- Retrieve weather forcast information.
-
-Response:
-
 {
   "city": {
     "id": 3163858,
@@ -147,164 +144,82 @@ Response:
       "dt": 1661857200,
       "sunrise": 1661834187,
       "sunset": 1661882248,
-      "temp": {
-        "day": 299.66,
-        "min": 288.93,
-        "max": 299.66,
-        "night": 290.31,
-        "eve": 297.16,
-        "morn": 288.93
-      },
-      "feels_like": {
-        "day": 299.66,
-        "night": 290.3,
-        "eve": 297.1,
-        "morn": 288.73
-      },
-      "pressure": 1017,
-      "humidity": 44,
-      "weather": [
-        {
-          "id": 500,
-          "main": "Rain",
-          "description": "light rain",
-          "icon": "10d"
-        }
-      ],
-      "speed": 2.7,
-      "deg": 209,
-      "gust": 3.58,
-      "clouds": 53,
-      "pop": 0.7,
-      "rain": 2.51
+      ...
     },
-    {
-      "dt": 1661943600,
-      "sunrise": 1661920656,
-      "sunset": 1661968542,
-      "temp": {
-        "day": 295.76,
-        "min": 287.73,
-        "max": 295.76,
-        "night": 289.37,
-        "eve": 292.76,
-        "morn": 287.73
-      },
-      "feels_like": {
-        "day": 295.64,
-        "night": 289.45,
-        "eve": 292.97,
-        "morn": 287.59
-      },
-      "pressure": 1014,
-      "humidity": 60,
-      "weather": [
-        {
-          "id": 500,
-          "main": "Rain",
-          "description": "light rain",
-          "icon": "10d"
-        }
-      ],
-      "speed": 2.29,
-      "deg": 215,
-      "gust": 3.27,
-      "clouds": 66,
-      "pop": 0.82,
-      "rain": 5.32
-    }]
+    ...
+  ]
 }
-
-**GET /api/users/:id/alerts**
-
-- Retrieve weather alerts for logged in user
+GET /api/users/:id/alerts
+- Retrieve weather alerts for logged-in user.
 
 Response:
+[
+  {        
+    "id": 1,    
+    "user_id": 1,    
+    "category": "condition",        
+    "weather": "Fog",        
+    "date": "1661943600",
+    "status": "active",
+    "update": "none"
+  },    
+  {         
+    "id": 2,    
+    "user_id": 2,    
+    "category": "date",
+    "weather": "Cloudy",  
+    "date": "1661943600",   
+    "status": "active",        
+    "update": "none"    
+  }
+]
 
-[{        
-  "id": 1,    
-  "user_id": 1,    
-  "category": "condition",        
-  "weather": "Fog",        
-  "date": "1661943600",
-  "status": "active",
-  "update": "none"
-},    
-{         
-  "id": 2,    
-  "user_id": 2,    
-  "category": "date",
-  "weather": "Cloudy"  
-  "date": "1661943600",   
-  "status": "active",        
-  "update": "none"    
-}]
+- **DELETE /api/alerts/:id**
 
-**POST /api/alerts/**
-
-- Store information for alerts regarding weather settings.
+Remove a weather alert.
 
 Parameters:
 
-- user_id (number): ID of the logged in user
-- setting_id (number): ID of the associated weather alert setting
-- timestamp (datetime): Timestamp of when the alert was sent
+    id (number): ID of the weather to be removed
 
 Response:
-
-{
-"message": "Weather alert stored successfully"
-}
-
-
-**DELETE /api/alerts/:id**
-
-- Remove a weather alert.
-
-Parameters:
-
-- id (number): ID of the weather to be removed
-
-Response:
-
 {
   "message": "Weather alert removed successfully"
 }
 
+- **GET /api/settings**
 
-**GET /api/settings**
-
-- Retrieve information about alerts selected by a user.
+Retrieve all weather alert settings.
 
 Response:
-[{
-  "id": 1,
-  "user_id": 1,
-  "location": [ "40.7128", "74.0060"],
-  "category": "weather",
-  "date": "2024-03-27",
-  "condition": "fog",
-  "timestamp": "2024-03-27T10:15:00Z"
-},
-{
-  "id": 2,
-  "user_id": 2,
-  "vip_id": 2,
-  "employee_id": null,
-  "timestamp": "2024-03-28T15:30:00Z"
-}]
+[
+  {
+    "id": 1,
+    "user_id": 1,
+    "location": [ "40.7128", "74.0060"],
+    "category": "weather",
+    "date": "2024-03-27",
+    "condition": "fog",
+    "timestamp": "2024-03-27T10:15:00Z"
+  },
+  {
+    "id": 2,
+    "user_id": 2,
+    "vip_id": 2,
+    "employee_id": null,
+    "timestamp": "2024-03-28T15:30:00Z"
+  }
+]
 
+- **GET /api/settings/:id**
 
-**GET **GET /api/settings/:id**
-
-- Retrieve information about a specific alert setting.
+Retrieve information about a specific alert setting.
 
 Parameters:
 
-- id (number): ID of the weather alert to retrieve
+    id (number): ID of the weather alert to retrieve
 
 Response:
-
 {
   "id": 1,
   "user_id": 1,
@@ -315,36 +230,33 @@ Response:
   "timestamp": "2024-03-27T10:15:00Z"
 }
 
+- **POST /api/settings/**
 
-**POST /api/settings/**
-
-- Store setting information for alerts specified by user.
+Store setting information for alerts specified by user.
 
 Parameters:
 
-- user_id (number): ID of the user adding the alert
-- timestamp (datetime): Timestamp of when the alert was added
+    user_id (number): ID of the user adding the alert
+    timestamp (datetime): Timestamp of when the alert was added
 
 Response:
-
 {
-"message": "Weather alert setting stored successfully"
+  "message": "Weather alert setting stored successfully"
 }
 
+- **DELETE /api/settings/:id**
 
-**DELETE /api/settings/:id**
-
-- Remove a specific weather alert setting.
+Remove a specific weather alert setting.
 
 Parameters:
 
-- id (number): ID of the weather alert setting to be removed
+    id (number): ID of the weather alert setting to be removed
 
 Response:
-
 {
   "message": "Weather alert setting removed successfully"
 }
+
 
 ### Auth
 
