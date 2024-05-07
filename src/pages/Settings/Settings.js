@@ -65,6 +65,7 @@ const Settings = () => {
         }
         authorizeUser()
     }, []);
+
     const handleLogout = () => {
         localStorage.removeItem('token');
         setUser(null);
@@ -119,8 +120,8 @@ const Settings = () => {
 
     if (failedAuth) {
         return (
-            <main className="dashboard">
-                <p>You must be logged in to see this page.</p>
+            <main className="settings__logout">
+                <h3>You must be logged in to see this page.</h3>
                 <p>
                     <Link to="/login">Log in</Link>
                 </p>
@@ -165,7 +166,9 @@ const Settings = () => {
                     <div className="settings__container">
                         <section className="settings__header">
                             <h2 className="settings__title">Settings</h2>
-
+                            <button className="dashboard__logout" onClick={handleLogout}>
+                                Log out
+                            </button>
                         </section>
                         <section className="settings__list">
                             <div className="settings__actions">

@@ -4,9 +4,17 @@
 
 .settings {
 
-    &__title{
-        padding: 2rem 0 8px 0;
+    &__header {
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        padding: 2rem 0;
     }
+
+    &__title{
+        padding:0;
+    }
+
     &__location-container{
         display: flex;
         padding-bottom: 16px;
@@ -27,7 +35,13 @@
 
     &-item__actions {
         position: relative;
-        background-color: green;
+    }
+
+    &__logout {
+        padding: 2rem 2.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
     }
 
     // padding: 1rem;

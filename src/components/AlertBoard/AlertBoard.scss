@@ -61,4 +61,11 @@
     &__card-delete {
         width: 32px !important;
     }
+
+    &__logout {
+        padding: 2rem 3rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
 }
