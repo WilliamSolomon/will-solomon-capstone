@@ -70,7 +70,7 @@ As a logged in user, I want to be able to:
     - Alerts
     - Settings
 
-### Mockup
+### Screenshots
 ![](./src/assets/images/ProposalMockup.png)
 
 
