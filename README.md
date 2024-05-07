@@ -3,12 +3,11 @@ WeatherCap App
 
 ## Overview
 
-WeatherCap is an app that photography enthusiasts can use to receive alerts for and track specific weather conditions.
+For my BrainStation software development capstone, I developed WeatherCap—an app designed for photography enthusiasts to receive alerts and track specific weather conditions
 
 ### Problem
 
-You've always wanted to take foggy photos of the Manhattan Bridge, a mirror photo of the Empire State building in a puddle after a rainstorm, or the perfect sunset shot with a partly cloudy sky. The program is that with a such a busy life, you forget to keep an eye out for the perfect weather conditions for a spontaneous photo outing.
-Alternatively, you plan your next outing a week away, unaware that the weather has turned for the worse in the days between.
+Have you ever dreamt of capturing foggy shots of the Manhattan Bridge, reflections of the Empire State Building in rain puddles, or the perfect sunset against a partly cloudy sky? The challenge lies in remembering to watch out for ideal weather conditions amidst life's busyness or planning an outing only to find unfavorable weather conditions on the day. WeatherCap solves this dilemma by keeping you informed and prepared for spontaneous or planned photo outings.
 
 ### User Profile
 
@@ -18,15 +17,16 @@ Alternatively, you plan your next outing a week away, unaware that the weather h
 
 ### Features
 
-- As a user, I want to be able to select my location
-- As a user, I want to be able to select weather conditions to monitor for
-- As a user, I want to be able to select a specific date to monitor weather changes for
+As a user, I want to be able to:
+- select my location
+- receive a weather forecast
+- create an account to manage my alerts and alert settings
 
-- As a user, I want to be able to create an account to manage my alerts and alert settings
-
-- As a logged in user, I want to be receive alerts when not logged in 
-- As a logged in user, I want to be able retain settings after the browser is closed
-- As a logged in user, I want to be able delete/dismiss alerts
+As a logged in user, I want to be able to:
+- select weather conditions to monitor for
+- receive alerts when not logged in 
+- retain settings after the browser is closed
+- delete/dismiss alerts
 
 ## Implementation
 
@@ -37,24 +37,38 @@ Alternatively, you plan your next outing a week away, unaware that the weather h
 - Express
 - Client libraries: 
     - react
-    - react-router
+    - react-dom
+    - react-router-dom
     - axios
+    - react-icons
+    - react-places-autocomplete
+    - jwt-decode
+    - sass
 - Server libraries:
-    - knex
     - express
+    - knex
+    - bcryptjs
+    - jsonwebtoken
+    - mysql2
+    - node-fetch
+    - cors
+    - dotenv
+    - node-cron
+    - nodemon
 
 ### APIs
 
-- OpenWeatherMap API: This API will provide current weather data, forecasts, and weather alerts for various locations worldwide.
+- OpenWeatherMap API: Provides current weather data and forecasts for various locations worldwide.
+- Google Places API: Provides location search and latitude/longitude
 
 ### Sitemap
 
-- Landing Page
 - Register
 - Login
 - Dashboard
-- Alert Settings
-- Alert List
+    - Weather
+    - Alerts
+    - Settings
 
 ### Mockup
 ![](./src/assets/images/ProposalMockup.png)
@@ -72,8 +86,7 @@ Users:
 
 ### Endpoints
 
-- Handle CRUD operations for user weather alert settings.
-
+- Handle CRUD operations for user accounts, weather alerts, and weather alert settings.
 
 **POST /api/users/register**
 
