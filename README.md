@@ -96,7 +96,6 @@ Parameters:
 - password (string): User's password
 
 Response:
-```json
 {
 "message": "User successfully registered"
 }
