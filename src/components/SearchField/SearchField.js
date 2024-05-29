@@ -5,41 +5,37 @@ import PlacesAutocomplete, {
 } from 'react-places-autocomplete';
 import './SearchField.scss'; 
 
-const SearchField = ({setAddressInfo}) => {
+const SearchField = ({ setAddressInfo }) => {
     const [address, setAddress] = useState('');
-  
+
     const handleChange = (address) => {
         setAddress(address);
     };
 
     const handleSelect = (address) => {
-        setAddress(address);
-    
         geocodeByAddress(address)
             .then((results) => getLatLng(results[0]))
             .then((latLng) => {
                 const { lat, lng } = latLng;
-                // Check if lat and lng are truthy before proceeding
                 if (lat && lng) {
-                    // Use setAddressInfo with address, lat, and lng
                     setAddressInfo({
                         address: address,
                         lat: lat,
                         lon: lng
                     });
-                    const sentAddressInfo = {
+                    console.log('Sent Address Info', {
                         address: address,
                         lat: lat,
                         lon: lng
-                    };
-                    console.log('Sent Address Info', sentAddressInfo);
+                    });
                 } else {
                     console.log('Latitude or Longitude is not available.');
                 }
+                // Clear the address after setting the address info
+                setAddress('');
             })
             .catch((error) => console.error('Error', error));
     };
-
 
     return (
         <PlacesAutocomplete
@@ -52,7 +48,7 @@ const SearchField = ({setAddressInfo}) => {
                     <input
                         {...getInputProps({
                             placeholder: 'Enter your city',
-                            className: 'search-field__input', // Reference the class from SCSS
+                            className: 'search-field__input',
                         })}
                     />
                     <div className="search-field__autocomplete-dropdown-container">
@@ -63,7 +59,7 @@ const SearchField = ({setAddressInfo}) => {
                                 : 'search-field__suggestion-item';
                             return (
                                 <div
-                                    key= {index}
+                                    key={index}
                                     {...getSuggestionItemProps(suggestion, {
                                         className,
                                     })}
