@@ -79,12 +79,11 @@ const AlertBoard = () => {
                 };
     
                 fetchAlerts();
-                updateTrigger()
             }
         }
     
 
-    }, [token, userId])
+    }, [token, userId, triggerRefresh])
 
     if (failedAuth) {
         return (
