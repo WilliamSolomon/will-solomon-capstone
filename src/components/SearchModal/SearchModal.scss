@@ -61,7 +61,7 @@
         width: 100%;
         
         @include tablet {
-            padding: 0 0 0 2rem;
+            // padding: 0 0 0 2rem;
             width: 80%;
         }
     }
@@ -76,7 +76,9 @@
             padding: 0 2rem 2.5rem 0;
         }
 
-        @include desktop {}
+        @include desktop {
+
+        }
     }
 
     &__heading {
@@ -99,7 +101,7 @@
         }
 
         @include desktop {
-            width: 12%;
+            width: 5rem;
         }
 
         &:hover {
@@ -117,7 +119,7 @@
         }
 
         @include desktop {
-            width: 12%;
+            width: 5rem;
         }
     }
 }
