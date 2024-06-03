@@ -7,6 +7,8 @@ WeatherCap App
 
 For my BrainStation software development capstone, I developed WeatherCap—an app designed for photography enthusiasts to receive alerts and track specific weather conditions
 
+:bulb: **Note** the backend code is located here: [WeatherCap Capstone Backend](https://github.com/WilliamSolomon/will-solomon-capstone-server)
+
 ### Problem
 
 Have you ever dreamt of capturing foggy shots of the Manhattan Bridge, reflections of the Empire State Building in rain puddles, or the perfect sunset against a partly cloudy sky? The challenge lies in remembering to watch out for ideal weather conditions amidst life's busyness or planning an outing only to find unfavorable weather conditions on the day. WeatherCap solves this dilemma by keeping you informed and prepared for spontaneous or planned photo outings.
