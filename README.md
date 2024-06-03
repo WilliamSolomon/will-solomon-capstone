@@ -1,6 +1,8 @@
 # Project Title
 WeatherCap App
 
+![](./src/assets/images/SQLdata.png)
+
 ## Overview
 
 For my BrainStation software development capstone, I developed WeatherCap—an app designed for photography enthusiasts to receive alerts and track specific weather conditions
@@ -70,9 +72,8 @@ As a logged in user, I want to be able to:
     - Alerts
     - Settings
 
-### Screenshots
-![](./src/assets/images/ProposalMockup.png)
-
+### Video
+![](./src/assets/video/WeatherCapDemo.mp4)
 
 ### Data
 
