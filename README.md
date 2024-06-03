@@ -30,8 +30,6 @@ As a logged in user, I want to be able to:
 - retain settings after the browser is closed
 - delete/dismiss alerts
 
-## Implementation
-
 ### Tech Stack
 
 - React
@@ -72,8 +70,8 @@ As a logged in user, I want to be able to:
     - Alerts
     - Settings
 
-### Video
-https://github.com/WilliamSolomon/will-solomon-capstone/assets/54815679/4c7b8b2f-1870-41b6-a4b0-4861ed66fb44
+### Video(gif)
+![WeatherCapDemo](https://github.com/WilliamSolomon/will-solomon-capstone/assets/54815679/2763268e-b69d-4e62-981f-64456dfc633f)
 
 
 ### Data
