@@ -1,7 +1,7 @@
 # Project Title
 WeatherCap App
 
-![](./src/assets/images/SQLdata.png)
+![](./src/assets/images/WeatherAppScreenShot.png)
 
 ## Overview
 
@@ -73,7 +73,8 @@ As a logged in user, I want to be able to:
     - Settings
 
 ### Video
-![](./src/assets/video/WeatherCapDemo.mp4)
+https://github.com/WilliamSolomon/will-solomon-capstone/assets/54815679/4c7b8b2f-1870-41b6-a4b0-4861ed66fb44
+
 
 ### Data
 
