@@ -1,0 +1,131 @@
+@use '../../styles/partials/global';
+@import '../../styles/partials/variables';
+@import '../../styles/partials/mixins';
+
+.header{
+    background-color: $Graphite;
+    padding: 4px 240px 0 240px;
+    z-index: -1;
+
+    @include tablet{
+        padding: 0.5rem 2rem 0 2rem;
+    }
+
+    @include desktop{
+        padding: 12px 240px 0 240px;
+    }
+}
+
+.nav-bar{
+    width: 100%;
+
+    @include tablet{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    @include desktop{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__image-container{
+        display: flex;
+        justify-content: center;
+        // padding: 1.25rem 0 1.25rem 0;
+
+        @include tablet{
+            margin-right: 1.25rem;
+        }
+
+        @include desktop{
+            margin-right: 1.25rem;
+        }
+    }
+
+    &__image-container a {
+        display: flex;
+        align-items: center;
+    }
+
+    &__image {
+        width: 100px;
+    }
+
+    &__button-container{
+        display: flex;
+        justify-content: space-between;
+
+        @include tablet{
+            padding: 0;
+            display: flex;
+        }
+
+        @include desktop{
+            padding: 0;
+            display: flex;
+        }
+    }
+
+    &__button-right{
+        margin-left: 8px;
+    }
+
+    &__button-left, &__button-right{
+        width: 50%;
+        
+        @include tablet{
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        @include desktop{
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+        }
+        
+    }
+
+    &__button-right-container{
+        margin-left: 8x;
+    }
+
+    &__button-warehouse, &__button-inventory{
+        height: 2.25rem;
+        background-color: $Graphite;
+
+        &:hover{
+            text-decoration:underline;
+            
+        }
+
+        @include tablet{
+            height: 2.375rem;
+            width: 7rem;
+        }
+
+        @include desktop{
+            height: 2.375rem;
+            width: 7rem;
+        }
+
+    }
+
+    &__button-warehouse--active, 
+    &__button-inventory--active{
+        background-color: $Instock-Black;
+
+        &:hover{
+            background-color: $Instock-Black;
+            
+        }
+    }
+
+    &__button-link{
+        color: $White;
+    }
+}

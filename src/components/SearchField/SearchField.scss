@@ -1,0 +1,52 @@
+@use '../../styles/partials/global';
+@import '../../styles/partials/variables';
+@import '../../styles/partials/mixins';
+
+
+.search-field {
+
+    &__input {
+        // Your styles for the input element
+        width: 400px;
+        background-color: rgba($WC-White, $alpha: 0.2);
+        padding: 1.5rem;
+        border-radius: 4px;
+        color: $WC-White;
+        border: 0;
+        position: relative;
+
+        &::placeholder {
+            color: rgba($WC-White, 1); // Adjusted placeholder color
+        }
+
+
+        &:focus {
+            border: solid 1px rgba($WC-White, $alpha: 0.2);
+        }
+    
+    }
+
+    &__autocomplete-dropdown-container {
+        // Your styles for the dropdown container
+        background-color: rgba($WC-White, $alpha: 0);
+        color: $WC-White;
+        max-width: 400px;
+        position: absolute;
+        z-index: 1000;
+        @extend .text-style-body-copy-tab;
+        padding: 0.5rem;
+    }
+
+    &__suggestion-item {
+        // Your styles for suggestion items
+        background-color: rgba($WC-White, $alpha: 0.1);
+    }
+
+    // &__suggestion-item--active {
+    //     // Your styles for active suggestion items
+    //     background-color: 'pink';
+    //     cursor: 'pointer';
+    //     border: 0;
+    // }
+
+}

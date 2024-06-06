@@ -1,0 +1,43 @@
+@use '../../styles/partials/global';
+@import '../../styles/partials/variables';
+@import '../../styles/partials/mixins';
+
+.weather-card {
+    scroll-snap-align: start;
+    border-radius: 20px; 
+    background-color: $WC-White;
+    padding: 1rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 200px;
+
+    &__top {
+        width: 200px
+    }
+
+    &__temperature {
+        @extend .text-style-page-header-tab;
+    }
+
+    &__summary {
+        display: flex;
+    }
+
+    &__description {
+        @extend .text-style-page-header-mbl;
+        text-transform: capitalize;
+    }
+
+    &__icon {
+        height: 40px;
+        padding-left: 0.75rem;
+    }
+
+    &__dayOfWeek {
+        @extend .text-style-body-copy-tab;
+        color: $WC-Gray;
+        font-weight: 600;
+    }
+}

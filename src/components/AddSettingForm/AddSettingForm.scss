@@ -1,0 +1,192 @@
+@use '../../styles/partials/global';
+@import '../../styles/partials/variables';
+@import '../../styles/partials/mixins';
+
+
+
+.settings-form {
+    background-color: #FFF;
+    &__container {
+        display: flex;
+        flex-direction: column;
+
+        width: 100%;
+
+        @include tablet {
+            flex-direction: row;
+            padding: 2rem 0;
+        }
+
+        @include desktop {
+            flex-direction: row;
+            // padding: 2rem 0;
+        }
+    }
+
+    &__group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1.25rem;
+        position: relative;
+
+        @include tablet {
+            width: 100%;
+            margin-bottom: 1.5rem;
+        }
+
+        @include desktop {
+            width: 100%;
+            margin-bottom: 1.5rem;
+        }
+    }
+
+    &__radio-group {
+        display: flex;
+        justify-content: start;
+        min-width: auto;
+
+        @include tablet {
+            justify-content: start;
+        }
+    }
+
+    &__radio-label {
+        display: flex;
+        min-width: auto;
+        margin-right: 2rem;
+        align-items: center;
+
+        @include tablet {
+            padding-right: 2.5rem;
+            margin-right: 0;
+            margin-bottom: 0;
+        }
+    }
+
+    &__radio-input {
+        width: 1rem;
+        height: 1rem;
+        min-width: auto;
+        margin-right: 0.5rem;
+    }
+
+    &__select-input {
+        padding: 0 16px 0 16px;
+        background-image: url('../../assets/icons/arrow_drop_down-24px.svg');
+        background-repeat: no-repeat;
+        background-position: right 1rem center;
+        appearance: none;
+    }
+
+    &__left {
+        border-bottom: 1px solid $Cloud;
+        padding: 1rem 1.5rem;
+        width: 100%;
+
+        @include tablet {
+            border-bottom: none;
+            border-right: 1px solid $Cloud;
+            padding: 0 2rem;
+        }
+
+        @include desktop {
+            border-bottom: none;
+            border-right: 1px solid $Cloud;
+            padding: 0 2rem;
+        }
+    }
+
+    &__right {
+        padding: 1rem 1.5rem;
+        width: 100%;
+
+        @include tablet {
+            border-bottom: none;
+            padding: 0 2rem;
+        }
+
+        @include desktop {
+            border-bottom: none;
+            padding: 0 2rem;
+        }
+    }
+
+    &__subheading {
+        padding-bottom: 1rem;
+    }
+
+    &__label {
+        margin-bottom: 0.25rem;
+    }
+
+    &__input-textarea {
+        height: 144px;
+        position: relative;
+        vertical-align: top;
+    }
+
+    &__input-textarea::placeholder {
+        vertical-align: top;
+    }
+
+    &__button-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 1rem 1.5rem;
+        background-color: #FFF;
+
+        @include tablet {
+            padding: 1rem 2rem;
+            justify-content: flex-end;
+        }
+
+        @include tablet {
+            padding: 1rem 2rem;
+            justify-content: flex-end;
+        }
+    }
+
+    &__button {
+
+        &--add {
+            @include tablet {
+                width: 24%;
+            }
+
+            @include desktop {
+                width: 6.5rem;
+            }
+        }
+
+        &--edit {
+            @include tablet {
+                width: 10%;
+            }
+
+            @include desktop {
+                width: 7%;
+            }
+        }
+
+        &--cancel {
+            background-color: $White;
+            border: 1px solid $Slate;
+            color: $Slate;
+
+            @include tablet {
+                width: 12%;
+            }
+
+            @include desktop {
+                width: 6.5rem;
+            }
+
+            &:hover {
+                background-color: $White;
+                color: $Instock-Indigo;
+                border: 1px solid $Instock-Indigo;
+            }
+        }
+    }
+}

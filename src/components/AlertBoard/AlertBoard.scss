@@ -1,0 +1,71 @@
+@use '../../styles/partials/global';
+@import '../../styles/partials/variables';
+@import '../../styles/partials/mixins';
+
+.alerts {
+    // width: 34.25rem;
+    padding: 0 0 0 3rem;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    position: relative; /* Make sure the element is positioned relative to its normal position */
+    left: -3rem; /* Move the element 3rem to the left */
+    z-index: 0; /* Push the element behind all other elements */
+    display: flex;
+    flex-direction: column;
+    // background-color: $WC-White;
+
+    &__title {
+        padding: 2rem 0;
+        // @extend .text-style-page-header-desk
+    }
+
+    &__sub-title {
+        padding: 2rem 0;
+    }
+
+    &__cards-container {
+        position: relative;
+        padding-top: 16px;
+        overflow-x: hidden;
+        max-height: 600px;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+    }
+
+    &__card-condition {
+        text-transform: capitalize;
+        font-weight: 600;
+        font-size: 20px;
+        color: #FFF;
+    }
+
+    &__card-date {
+        text-transform: capitalize;
+        font-weight: 600;
+        font-size: 20px;
+        color: #FFF;
+    }
+
+
+    &__card {
+        display: flex;
+        width: 400px;
+        border: solid 1px #ffb80360;
+        padding: 8px 16px 8px 16px;
+        justify-content: space-between;
+        background-color: #219EBC;
+        border-radius: 5px;
+        margin-bottom: 16px;
+    }
+
+    &__card-delete {
+        width: 32px !important;
+    }
+
+    &__logout {
+        padding: 2rem 3rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+}

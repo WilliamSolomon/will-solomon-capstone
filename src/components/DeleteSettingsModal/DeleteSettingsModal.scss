@@ -1,0 +1,124 @@
+@use '../../styles/partials/global';
+@import '../../styles/partials/variables';
+@import '../../styles/partials/mixins';
+
+
+.no-scroll {
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+}
+
+.settings-modal {
+    &__overlay {
+        width: 100%;
+        height: 100%;
+        // position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        
+        z-index: 2;
+
+        @include tablet {
+            background-color: $Instock-BlackBg;
+        }
+    }
+
+    &__content {
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: $White;
+        padding: 1rem 1rem 0 1rem;
+        display: flex;
+        flex-direction: column;
+        // justify-content: space-between;
+
+        @include tablet {
+            width: 85vw;
+            height: 30vh;
+            top: 21%
+        }
+
+        @include desktop {
+            width: 440px;
+            height: 620px;
+        }
+    }
+
+    &__close-container {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 1.5rem;
+
+        @include tablet {
+            margin-bottom: 0;
+        }
+    }
+
+    &__text-container {
+        width: 100%;
+        
+        @include tablet {
+            padding: 0 0 0 2rem;
+            width: 80%;
+        }
+    }
+
+    &__actions {
+        display: flex;
+        padding: 1rem 0;
+        gap: 1rem;
+
+        @include tablet {
+            justify-content: flex-end;
+            padding: 0 2rem 2.5rem 0;
+        }
+
+        @include desktop {}
+    }
+
+    &__heading {
+        margin-bottom: 1rem;
+    }
+
+    &__cancel,
+    &__delete {
+        height: 2.25rem;
+    }
+
+    &__cancel {
+        background-color: $Light-Grey;
+        border: 1px solid $Slate;
+        color: $Slate;
+
+        @include tablet {
+            width: 12%;
+        }
+
+        @include desktop {
+            width: 6rem;
+        }
+
+        &:hover {
+            background-color: $Light-Grey;
+            color: $Instock-Indigo;
+            border: 1px solid $Instock-Indigo;
+        }
+    }
+
+    &__delete {
+        background-color: $Red;
+
+        @include tablet {
+            width: 12%;
+        }
+
+        @include desktop {
+            width: 6rem;
+        }
+    }
+}

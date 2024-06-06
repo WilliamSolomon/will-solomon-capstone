@@ -1,0 +1,24 @@
+.dashboard {
+    padding: 24px 240px 24px 240px;
+
+    &__weather {
+        display: flex;
+    }
+
+    &__weather-forecast {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &__actions {
+        display: flex;
+        font-weight: 600;
+        font-size: 18px;
+    }
+    
+    &__location-update {
+        padding-left: 8px;
+    }
+
+
+}

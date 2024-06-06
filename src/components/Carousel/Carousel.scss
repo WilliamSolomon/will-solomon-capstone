@@ -1,0 +1,66 @@
+@use '../../styles/partials/global';
+@import '../../styles/partials/variables';
+@import '../../styles/partials/mixins';
+
+
+.carousel {
+    display: flex;
+    width: 400px;
+    height: 230px;
+    overflow-x: hidden;
+    overflow-y: visible;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    align-items: center;
+    margin-left: -0.5px;
+   
+
+    &__container {
+        display: flex;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+     
+        &::after {
+            content: "";
+            width: 120px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0), rgb(255, 255, 255, 1));
+            z-index: 2; // Set a higher z-index value
+        }
+    }
+
+    &__arrow-left,
+    &__arrow-right {
+        height: 30px;
+        width: 30px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 24px;
+        cursor: pointer;
+        background: none;
+        border: none;
+        color: $WC-White;
+        outline: none;
+        z-index: 3;
+        filter: drop-shadow(0 2px 4px rgba(207, 207, 207, 0.7));
+    }
+
+    &__arrow-left {
+        left: -1rem;
+    }
+
+    &__arrow-right {
+        right: 1rem;
+    }
+
+}
+
+::-webkit-scrollbar {
+    height: 0;
+    width: 0;
+}
