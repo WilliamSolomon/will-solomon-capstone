@@ -1,9 +1,13 @@
 # Project Title
 WeatherCap App
 
+![](./src/assets/images/WeatherAppScreenShot.png)
+
 ## Overview
 
 For my BrainStation software development capstone, I developed WeatherCap—an app designed for photography enthusiasts to receive alerts and track specific weather conditions
+
+:bulb: **Note** the backend code is located here: [WeatherCap Capstone Backend](https://github.com/WilliamSolomon/will-solomon-capstone-server)
 
 ### Problem
 
@@ -27,8 +31,6 @@ As a logged in user, I want to be able to:
 - receive alerts when not logged in 
 - retain settings after the browser is closed
 - delete/dismiss alerts
-
-## Implementation
 
 ### Tech Stack
 
@@ -70,8 +72,8 @@ As a logged in user, I want to be able to:
     - Alerts
     - Settings
 
-### Screenshots
-![](./src/assets/images/ProposalMockup.png)
+### Video(gif)
+![WeatherCapDemo](https://github.com/WilliamSolomon/will-solomon-capstone/assets/54815679/2763268e-b69d-4e62-981f-64456dfc633f)
 
 
 ### Data
